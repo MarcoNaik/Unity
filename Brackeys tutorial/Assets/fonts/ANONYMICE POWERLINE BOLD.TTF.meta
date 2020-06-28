@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 6c912e6f11e77884caa0fc3513cb459f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Anonymous Pro for Powerline
+  fontNames:
+  - Anonymous Pro for Powerline
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6bb32963970c15a408345bc56455c962, type: 3}
+  - {fileID: 12800000, guid: 7b215f6a6d72e8d4c8a0dad52a8ab238, type: 3}
+  - {fileID: 12800000, guid: 23a9c9bf531cabb43ab34eb31059aa6a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
