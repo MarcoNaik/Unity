@@ -58,6 +58,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\MapGen\Distribution.cs" />
+     <Compile Include="Assets\Scripts\MapGen\TileMapGenerator.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\ResourceInventory.cs" />
      <Compile Include="Assets\Scripts\Tiles\AbstractTile.cs" />
@@ -66,6 +68,10 @@
      <Compile Include="Assets\Scripts\Tiles\States\BattleState.cs" />
      <Compile Include="Assets\Scripts\Tiles\States\ITileState.cs" />
      <Compile Include="Assets\Scripts\Tiles\States\PacificState.cs" />
+     <Compile Include="Assets\Scripts\Tiles\States\StateController.cs" />
+     <Compile Include="Assets\Scripts\Tiles\States\WildCombatState.cs" />
+     <Compile Include="Assets\Scripts\Tiles\States\WildPacificState.cs" />
+     <Compile Include="Assets\Scripts\Tiles\States\WildState.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileController.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileTypes\FoodTile.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileTypes\MaterialsTile.cs" />
@@ -75,6 +81,7 @@
      <Compile Include="Assets\Scripts\Units\IGatherer.cs" />
      <Compile Include="Assets\Scripts\Units\IUnit.cs" />
      <Compile Include="Assets\Scripts\Units\UnitController.cs" />
+     <None Include="Assets\VertexColorFarmAnimals\Shaders\VertexColorUnlit.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/marco/OneDrive/Documentos/GitHub/Unity/jam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

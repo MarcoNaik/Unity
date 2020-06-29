@@ -58,7 +58,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Editor\TileEditor.cs" />
+     <Compile Include="Assets\Editor\TileEditor.cs" />
+     <Compile Include="Assets\Editor\TileMapGeneratorEditor.cs" />
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>C:/Users/marco/OneDrive/Documentos/GitHub/Unity/jam/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>

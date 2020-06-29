@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class FoodTile : AbstractTile, ITile
+    public class FoodTile : AbstractTile
     {
         public override void DeliverThisResource(int amount)
         {

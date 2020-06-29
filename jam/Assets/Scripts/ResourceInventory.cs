@@ -4,7 +4,9 @@ namespace DefaultNamespace
 {
     public class ResourceInventory  : MonoBehaviour
     {
+        [SerializeField]
         private int materials;
+        [SerializeField]
         private int food;
 
         public void addMaterials(int amount)

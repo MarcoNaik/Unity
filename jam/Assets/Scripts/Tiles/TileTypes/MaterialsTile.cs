@@ -2,10 +2,8 @@
 
 namespace DefaultNamespace
 {
-    public class MaterialsTile : AbstractTile, ITile
+    public class MaterialsTile : AbstractTile
     {
-        
-
         public override void DeliverThisResource(int amount)
         {
             Owner.GetComponent<Player>().resourceManager.addMaterials(amount);

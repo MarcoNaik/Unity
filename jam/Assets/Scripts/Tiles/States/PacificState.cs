@@ -1,10 +1,10 @@
 ﻿namespace DefaultNamespace
 {
     
-    public class PacificState : AbstractState ,ITileState
+    public class PacificState : AbstractState
     {
         
-        public void ResolveTurn() => DeliverResources();
+        public override void ResolveTurn() => DeliverResources();
 
         public PacificState(ITile tile) : base(tile)
         {

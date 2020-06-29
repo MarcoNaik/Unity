@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5767418343554116131}
   - component: {fileID: 124532879582455413}
   - component: {fileID: -10584609981605915}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GathererUnit
   m_TagString: GathererUnit
   m_Icon: {fileID: 0}
@@ -125,3 +125,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   powerLevel: 20
+  player: {fileID: 561043362002892356, guid: 28d62cf62e678b142b65d34a0f7a6c2c, type: 3}

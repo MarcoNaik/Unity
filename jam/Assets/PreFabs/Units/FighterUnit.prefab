@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5989823744836184293}
   - component: {fileID: 8859967778134751855}
   - component: {fileID: 3656663312142293077}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FighterUnit
   m_TagString: AttackUnit
   m_Icon: {fileID: 0}
@@ -124,4 +124,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  powerLevel: 50
+  powerLevel: 100
+  player: {fileID: 561043362002892356, guid: 28d62cf62e678b142b65d34a0f7a6c2c, type: 3}

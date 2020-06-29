@@ -17,9 +17,13 @@ namespace DefaultNamespace
         void DeliverThisResource(int resourcesToDeliver);
         GameObject gameObject { get; set; }
 
+        IUnit AttackerAvailable(List<IUnit> list);
+        IUnit UnitAlive(List<IUnit> list);
+
 
         void EndTurn();
         void RefreshIUnitList();
-        void SetState(ITileState newState);
+        
+        ITileState tileState { get; set; }
     }
 }

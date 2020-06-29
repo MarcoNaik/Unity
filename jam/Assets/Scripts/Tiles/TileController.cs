@@ -15,7 +15,7 @@ public class TileController : MonoBehaviour
         if (gameObject.CompareTag($"WoodTile"))
         {
            
-            tile = new MaterialsTile(gameObject, player, tier);
+            tile = new MaterialsTile(gameObject, null, tier);
         }
     }
     

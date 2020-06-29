@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
@@ -69,7 +70,8 @@ namespace DefaultNamespace
         private void Die()
         {
             Alive = false;
-            rb.AddForce(100,100, 100);
+            rb.GetComponent<Collider>().enabled = false;
+            rb.AddForce(Random.Range(-100,100),100, Random.Range(-100,100));
         }
         
         public abstract void AddToTile(GameObject tile);
