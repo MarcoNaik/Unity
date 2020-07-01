@@ -21,6 +21,7 @@ namespace DefaultNamespace
         public int powerLevel;
         public int maxHP;
         private int currentHP;
+        
 
         protected AbstractUnit(GameObject thisObject, GameObject owner, int powerLevel, int maxHP)
         {
