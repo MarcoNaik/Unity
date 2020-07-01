@@ -5,49 +5,32 @@ using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
-    public abstract class AbstractUnit : IUnit
+    public abstract class AbstractUnit : MonoBehaviour, IUnit
     {
-        private bool alive;
-
-        private Rigidbody rb;
-
-        public GameObject Owner { get; set; }
+        public UnitController UnitController { get; set; }
         
-
-        public GameObject GameObject { get; set; }
-        
-
-        private bool attacked;
         public int powerLevel;
         public int maxHP;
-        private int currentHP;
+        private int CurrentHP { get; set; }
+        private bool Attacked { get; set;}
+        public bool Alive { get; set;}
         
+           
+        private Rigidbody rb;
 
-        protected AbstractUnit(GameObject thisObject, GameObject owner, int powerLevel, int maxHP)
+
+        private void Awake()
         {
-            Owner = owner;
-            this.powerLevel = powerLevel;
-            this.maxHP = maxHP;
-            currentHP = maxHP;
-            attacked = false;
-            GameObject = thisObject;
-            Alive = true;
-            rb = thisObject.GetComponent<Rigidbody>();
+            UnitController = GetComponent<UnitController>();
+            CurrentHP = maxHP;
+            rb = GetComponent<Rigidbody>();
         }
 
-        
-        
-        public bool Alive
-        {
-            get => alive;
-            set => alive = value;
-        }
-
-        
         public bool HasAttacked()
         {
-            return attacked;
+            return Attacked;
         }
+        
 
         public int getPowerLever()
         {
@@ -55,18 +38,34 @@ namespace DefaultNamespace
         }
 
 
-        public void Attack(IUnit attackReceiver)
+        public void Attack(AbstractUnit attackReceiver)
         {
-            Debug.Log(GameObject.name + " attacked " + attackReceiver.GameObject.name);
-
+            Vector3 startPos = transform.position;
+            Move(attackReceiver.transform.position, 0.2f);
             attackReceiver.TakeDamage(powerLevel);
-            attacked = true;
+            Attacked = true;
+            Move(startPos, 0.1f);
+            
+            
         }
+
+        private void Move(Vector3 endPos, float threshold)
+        {
+            Vector3 startPos = transform.position;
+            float distance = (startPos - endPos).magnitude;
+            Vector3 directionNorm = (startPos - endPos).normalized;
+            while(distance>threshold)
+            {
+                transform.position += directionNorm * Time.fixedDeltaTime;
+                directionNorm = (startPos - endPos).normalized;
+                distance = (startPos - endPos).magnitude;
+            }
+        }
+        
         public void TakeDamage(int powerLevel)
         {
-            currentHP -= powerLevel;
-            if (currentHP <= 0) Die();
-
+            CurrentHP -= powerLevel;
+            if (CurrentHP <= 0) Die();
         }
         private void Die()
         {

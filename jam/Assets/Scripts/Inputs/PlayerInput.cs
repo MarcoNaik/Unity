@@ -5,7 +5,7 @@ using System.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour, ITapInput
+public class PlayerInput : MonoBehaviour
 {
     private InputManager inputManager;
     
@@ -13,7 +13,6 @@ public class PlayerInput : MonoBehaviour, ITapInput
     public Command startSelectionInput;
     public Command endSelectionInput;
     public Command rightClickInput;
-    public bool IsTaping { get; private set; }
 
     private void Awake()
     {

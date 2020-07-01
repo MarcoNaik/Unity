@@ -16,8 +16,8 @@ namespace DefaultNamespace
 
         private void Combat()
         {
-            int result = Versus(thisTile.Defenders, thisTile.EnemyAtackers, false);
-            if(result == 1 ) OneWayAttackLoop(thisTile.EnemyAtackers, thisTile.Defenders);
+            int result = CombatManager.Versus(thisTile.Defenders, thisTile.EnemyAtackers, false);
+            if(result == 1 ) CombatManager.OneWayAttackLoop(thisTile.EnemyAtackers, thisTile.Defenders);
         }
 
         

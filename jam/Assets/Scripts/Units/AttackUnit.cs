@@ -6,16 +6,13 @@ namespace DefaultNamespace
     {
         public override void AddToTile(GameObject tile)
         {
-            GameObject tileOwner = tile.GetComponent<TileController>().player;
+            Player tileOwner = tile.GetComponent<TileController>().Owner;
             
-            if(tileOwner != null && tileOwner.name.Equals(Owner.name)) 
+            if(tileOwner != null && tileOwner.name.Equals(UnitController.Owner.name)) 
                 tile.GetComponent<TileController>().tile.Defenders.Add(this);
             else
                 tile.GetComponent<TileController>().tile.EnemyAtackers.Add(this);
         }
-
-        public AttackUnit(GameObject thisObject, GameObject owner, int powerLevel, int maxHP) : base(thisObject, owner, powerLevel, maxHP)
-        {
-        }
+        
     }
 }

@@ -6,19 +6,25 @@ using UnityEngine;
 
 public class TileController : MonoBehaviour
 { 
-    public ITile tile;
-    public int tier;
-    public GameObject player;
+    public AbstractTile tile;
+    public Player Owner { get; set; }
+
+    public ITileState tileState;
+
+    public StateController stateController;
 
     private void Awake()
     {
-        if (gameObject.CompareTag($"WoodTile"))
-        {
-           
-            tile = new MaterialsTile(gameObject, null, tier);
-        }
+        Owner = null;
     }
     
+    
+    public void EndTurn()
+    {
+        tile.RefreshIUnitList();
+        tileState.ResolveTurn();
+        stateController.CheckState();
+    }
     private void OnCollisionEnter(Collision other)
     {
     

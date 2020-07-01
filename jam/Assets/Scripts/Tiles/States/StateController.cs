@@ -1,18 +1,27 @@
-﻿using UnityEngine.Rendering;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace DefaultNamespace
 {
-    public class StateController
+    public class StateController : MonoBehaviour
     {
-        public static void CheckState(TileController aTileController)
+        private TileController tileController;
+
+        private void Awake()
         {
-            ITile tile = aTileController.tile;
-            TileController tileController = aTileController;
+            tileController = GetComponent<TileController>();
+        }
+
+        public void CheckState()
+        {
+            ITile tile = tileController.tile;
             tile.RefreshIUnitList();
+            
             int stateID=0;
-            IUnit def = tile.UnitAlive(tile.Defenders);
-            IUnit gath = tile.UnitAlive(tile.Gatherers);
-            IUnit att = tile.UnitAlive(tile.EnemyAtackers);
+            IUnit def = CombatManager.UnitAlive(tile.Defenders);
+            IUnit gath = CombatManager.UnitAlive(tile.Gatherers);
+            IUnit att = CombatManager.UnitAlive(tile.EnemyAtackers);
 
             if (def != null) stateID += 1;
             if (att != null) stateID += 2;
@@ -21,65 +30,65 @@ namespace DefaultNamespace
             switch (stateID)
             {
                 case 0:
-                    SetWildState(tileController);
+                    SetWildState();
                     return;
                 case 1:
-                    SetWildPacificState(tileController);
+                    SetWildPacificState();
                     return;
                 case 2:
-                    SetWildPacificState(tileController);
+                    SetWildPacificState();
                     return;
                 case 3:
-                    SetWildCombatState(tileController);
+                    SetWildCombatState();
                     return;
                 case 4:
-                    SetPacificState(tileController);
+                    SetPacificState();
                     return;
                 case 5:
-                    SetPacificState(tileController);
+                    SetPacificState();
                     return;
                 case 6:
-                    SetBattleState(tileController);
+                    SetBattleState();
                     return;
                 case 7:
-                    SetBattleState(tileController);
+                    SetBattleState();
                     return;
             }
 
         }
 
-        private static void SetWildPacificState(TileController atile)
+        private void SetWildPacificState()
         {
-            atile.tile.tileState = new WildPacificState(atile.tile);
-            IUnit attackEnemyUnitCase = atile.tile.UnitAlive(atile.tile.EnemyAtackers);
+            tileController.tileState = new WildPacificState(tileController.tile);
+            IUnit attackEnemyUnitCase = CombatManager.UnitAlive(tileController.tile.EnemyAtackers);
             if (attackEnemyUnitCase != null)
             {
-                atile.player = atile.tile.UnitAlive(atile.tile.EnemyAtackers).Owner;
-                atile.tile.RefreshIUnitList();
+                tileController.Owner = attackEnemyUnitCase.UnitController.Owner;
+                tileController.tile.RefreshIUnitList();
             }
             
-            CheckState(atile);
+            CheckState();
         }
 
-        private static void SetWildState(TileController tile)
+        private void SetWildState()
         {
-            tile.tile.tileState = new WildState(tile.tile);
-            tile.player = null;
+            tileController.tileState = new WildState(tileController.tile);
+            tileController.Owner = null;
         }
         
-        private static void SetWildCombatState(TileController tile)
+        private void SetWildCombatState()
         {
-            tile.tile.tileState =new WildCombatState(tile.tile);
+            tileController.tileState =new WildCombatState(tileController.tile);
         }
 
-        private static void SetBattleState(TileController tile)
+        private void SetBattleState()
         {
-            tile.tile.tileState = new BattleState(tile.tile);
+            tileController.tileState = new BattleState(tileController.tile);
         }
         
-        private static void SetPacificState(TileController tile)
+        private void SetPacificState()
         {
-            tile.tile.tileState =new PacificState(tile.tile);
+            tileController.tileState =new PacificState(tileController.tile);
         }
       
     }

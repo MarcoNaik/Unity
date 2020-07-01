@@ -22,7 +22,6 @@ public class UnitMovementController : MonoBehaviour
         ismoving = true;
         this.tileClicked = tileClicked;
         planeV3 = (planePosMouse);
-        directionNorm = (planePosMouse-transform.position).normalized;
     }
 
     private void FixedUpdate()
@@ -30,6 +29,7 @@ public class UnitMovementController : MonoBehaviour
         if (ismoving)
         {
             float distance = (planeV3-transform.position).magnitude;
+            directionNorm = (planeV3-transform.position).normalized;
             Debug.Log(distance);
             if (distance < 0.15f) ismoving = false;
             transform.position += directionNorm * velocity * Time.fixedDeltaTime;

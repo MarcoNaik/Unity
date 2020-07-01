@@ -40,7 +40,7 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""id"": ""68528ca4-465b-4748-8034-3f6abfe91ba6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=0.10001,pressPoint=0.01)""
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""RightClick"",

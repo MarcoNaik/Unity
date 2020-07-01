@@ -10,7 +10,7 @@ public class TileEditor : Editor
         TileController tileController = (TileController) target;
         if (GUILayout.Button("EndTurn"))
         {
-            tileController.tile.EndTurn();
+            tileController.EndTurn();
         }
         if (GUILayout.Button("RefresIUnitsLists"))
         {
@@ -22,8 +22,8 @@ public class TileEditor : Editor
 
         if (GUILayout.Button("CheckState"))
         {
-            StateController.CheckState(tileController);
-            Debug.Log("Actual Tile State" + tileController.tile.tileState);
+            tileController.stateController.CheckState();
+            Debug.Log("Actual Tile State" + tileController.tileState);
 
         }
         

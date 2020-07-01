@@ -27,6 +27,7 @@ public class DrawSquare : MonoBehaviour
     {
         updatedMousePos = Input.mousePosition;
         updatedMousePos.y = Screen.height - updatedMousePos.y;
+        //rect= new Rect(startMousePos,  new Vector2(100 , 100));
         rect= new Rect(startMousePos,  updatedMousePos-startMousePos);
     }
 

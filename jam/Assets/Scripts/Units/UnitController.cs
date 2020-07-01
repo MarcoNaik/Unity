@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
-    public IUnit unit;
-    
-    public int hp;
-    public int powerLevel;
+    public AbstractUnit unit;
 
-    public GameObject player;
+    public Player Owner { get; set; }
 
     private UnitMovementController movement;
 
@@ -17,8 +14,6 @@ public class UnitController : MonoBehaviour
     private void Awake()
     {
         movement = GetComponent<UnitMovementController>();
-        if(gameObject.CompareTag($"GathererUnit")) unit = new Gatherer(gameObject, player, powerLevel, hp);
-        if(gameObject.CompareTag($"AttackUnit")) unit = new AttackUnit(gameObject, player, powerLevel, hp);
     }
 
 

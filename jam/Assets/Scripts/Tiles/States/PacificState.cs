@@ -1,4 +1,6 @@
-﻿namespace DefaultNamespace
+﻿using UnityEngine;
+
+namespace DefaultNamespace
 {
     
     public class PacificState : AbstractState
@@ -14,11 +16,16 @@
         public void DeliverResources()
         {
             int resourcesToDeliver = 0;
+            int tileTier = thisTile.TileTier;
+            if (tileTier == 0)
+            {
+                Debug.LogWarning("this tile has tier level 0!");
+            }
             foreach (IUnit unit in thisTile.Gatherers)
             {
                 var gatherer = unit;
                 resourcesToDeliver += gatherer.getPowerLever();
-                resourcesToDeliver /= thisTile.TileTier;
+                resourcesToDeliver /= tileTier;
             }
             thisTile.DeliverThisResource(resourcesToDeliver);
         }

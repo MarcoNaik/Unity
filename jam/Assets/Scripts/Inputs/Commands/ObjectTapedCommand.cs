@@ -11,6 +11,7 @@ public class ObjectTapedCommand : Command
 
     public override void Excecute()
     {
+        GetComponent<DrawSquare>().enabled = false;
         GameObject taped = ClickPositionManager.ObjectClicked();
         Debug.Log("we tapped" + taped.name);
         if (taped.layer == 9)

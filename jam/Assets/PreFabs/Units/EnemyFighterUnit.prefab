@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6976916331091292062}
   - component: {fileID: 7933608786353468970}
   - component: {fileID: 7223280960998534070}
+  - component: {fileID: 1389881147510795613}
   m_Layer: 9
   m_Name: EnemyFighterUnit
   m_TagString: AttackUnit
@@ -110,7 +111,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &7933608786353468970
 MonoBehaviour:
@@ -124,10 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30260d14410647419319d23668438bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 110
-  powerLevel: 100
-  player: {fileID: 2603159097418191072, guid: bf75ad875f005d14d8c390b2dc6579af, type: 3}
-  movement: {fileID: 0}
+  unit: {fileID: 1389881147510795613}
 --- !u!114 &7223280960998534070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,3 +138,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74e16737b154249adfceb128b4c7d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: 1
+--- !u!114 &1389881147510795613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929026731431722467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b610887fd346718fec3ba50bda18ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerLevel: 70
+  maxHP: 100

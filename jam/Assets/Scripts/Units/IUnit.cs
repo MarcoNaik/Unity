@@ -5,13 +5,12 @@ namespace DefaultNamespace
 {
     public interface IUnit
     {
-        GameObject Owner { get; set; }
-        GameObject GameObject { get; set; }
         bool HasAttacked();
-        void Attack(IUnit receiveAttack);
+        void Attack(AbstractUnit receiveAttack);
         void TakeDamage(int powerLevel);
         int getPowerLever();
         void AddToTile(GameObject tile);
+        UnitController UnitController { get; set; }
         bool Alive { get; set; }
     }
 }
