@@ -58,7 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CoroutineManager.cs" />
+     <Compile Include="Assets\GameController.cs" />
      <Compile Include="Assets\Scripts\Inputs\ClickPositionManager.cs" />
      <Compile Include="Assets\Scripts\Inputs\Commands\Command.cs" />
      <Compile Include="Assets\Scripts\Inputs\Commands\EndSelectionCommand.cs" />
@@ -97,6 +97,7 @@
      <Compile Include="Assets\Scripts\Units\IUnit.cs" />
      <Compile Include="Assets\Scripts\Units\UnitController.cs" />
      <Compile Include="Assets\Scripts\Units\UnitMovementController.cs" />
+     <Compile Include="Assets\Scripts\Units\UnitTypes\RangeUnit.cs" />
      <None Include="Assets\VertexColorFarmAnimals\Shaders\VertexColorUnlit.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/marco/OneDrive/Documentos/GitHub/Unity/jam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
