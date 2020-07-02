@@ -1,16 +1,17 @@
-﻿using UnityEngine;
-
-public class EndSelectionCommand: Command
+﻿namespace Inputs.Commands
 {
-    private RTSUnitManager rtsum;
-
-    private void Awake()
+    public class EndSelectionCommand: Command
     {
-        rtsum = GetComponent<RTSUnitManager>();
-    }
+        private RTSUnitManager rtsum;
 
-    public override void Excecute()
-    {
-        rtsum.EndUnitSelectionAt(ClickPositionManager.PlanePosMouse());
+        private void Awake()
+        {
+            rtsum = GetComponent<RTSUnitManager>();
+        }
+
+        public override void Excecute()
+        {
+            rtsum.EndUnitSelectionAt(ClickPositionManager.PlanePosMouse());
+        }
     }
 }

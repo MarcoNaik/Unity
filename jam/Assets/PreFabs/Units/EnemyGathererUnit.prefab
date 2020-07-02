@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 5404510703200084889}
+  Owner: {fileID: 2603159097418191073, guid: bf75ad875f005d14d8c390b2dc6579af, type: 3}
 --- !u!114 &2266297121559303941
 MonoBehaviour:
   m_ObjectHideFlags: 0

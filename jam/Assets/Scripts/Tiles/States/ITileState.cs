@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace
+﻿namespace Tiles.States
 {
     public interface ITileState
     {

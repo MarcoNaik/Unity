@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-public abstract class Command: MonoBehaviour
+namespace Inputs.Commands
 {
-    public virtual void  Excecute()
+    public abstract class Command: MonoBehaviour
     {
+        public virtual void  Excecute()
+        {
         
+        }
     }
 }

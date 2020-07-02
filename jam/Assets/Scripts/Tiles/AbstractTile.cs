@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using Tiles.States;
+using Units;
 using UnityEngine;
-using UnityEngine.WSA;
-using Random = UnityEngine.Random;
 
 
-namespace DefaultNamespace
+namespace Tiles
 {
     public abstract class AbstractTile: MonoBehaviour, ITile
     {
         public int tileTier;
         public int TileTier => tileTier;
+        public CombatManager CombatManager { get; set; }
 
         public List<GameObject> UnitsOnTop { get; set; }
         
@@ -26,6 +25,7 @@ namespace DefaultNamespace
 
         private void Awake()
         {
+            CombatManager = GetComponent<CombatManager>();
             UnitsOnTop = new List<GameObject>();
             Gatherers = new List<IUnit>();
             Defenders = new List<IUnit>();

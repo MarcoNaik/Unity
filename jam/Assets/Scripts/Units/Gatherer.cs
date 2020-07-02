@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Tiles;
+using UnityEngine;
 
-namespace DefaultNamespace
+namespace Units
 {
     public class Gatherer : AbstractUnit, IGatherer
     {

@@ -1,15 +1,10 @@
-﻿
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using Random = UnityEngine.Random;
+﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace Tiles.States
 {
     
     public class BattleState: AbstractState
     {
-        
         public override void ResolveTurn()
         {
             Combat();
@@ -31,6 +26,8 @@ namespace DefaultNamespace
         private void DefendersCombat()
         {
             int result = CombatManager.Versus(thisTile.Defenders, thisTile.EnemyAtackers, false);
+            Debug.Log(result);
+            
             switch (result)
             {
                 case 1:
@@ -45,9 +42,15 @@ namespace DefaultNamespace
                 case 6:CombatManager.OneWayAttackLoop(thisTile.Gatherers, thisTile.EnemyAtackers);
                     return;
 
-                case 7:CombatManager.OneWayAttackLoop(thisTile.Gatherers, thisTile.EnemyAtackers);
+                case 7:
+                    Debug.Log(result);
+                    CombatManager.OneWayAttackLoop(thisTile.Gatherers, thisTile.EnemyAtackers);
+                    return;
+                default:
                     return;
             }
+            
+            
 
         }
 

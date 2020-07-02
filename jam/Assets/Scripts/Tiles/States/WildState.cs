@@ -1,6 +1,4 @@
-﻿using UnityEngine.WSA;
-
-namespace DefaultNamespace
+﻿namespace Tiles.States
 {
     public class WildState : AbstractState
     {

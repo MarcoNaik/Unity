@@ -93,6 +93,8 @@ GameObject:
   - component: {fileID: 64514704331655296}
   - component: {fileID: 472078998635974508}
   - component: {fileID: 8876684221383836288}
+  - component: {fileID: 2006759346686710861}
+  - component: {fileID: 903509022079525273}
   m_Layer: 8
   m_Name: Forest2
   m_TagString: WoodTile
@@ -107,7 +109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517019888071542}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -190,7 +192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 8876684221383836288}
-  player: {fileID: 0}
 --- !u!114 &8876684221383836288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +205,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileTier: 1
+--- !u!114 &2006759346686710861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517019888071542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4512a693cf524ce0a6dcbb8a7a5d180d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &903509022079525273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517019888071542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5147feca42b242a3be354e392027949d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4211449506077271346
 PrefabInstance:
   m_ObjectHideFlags: 0

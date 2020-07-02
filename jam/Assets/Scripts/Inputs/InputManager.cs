@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @InputManager : IInputActionCollection, IDisposable
+namespace Inputs
 {
-    public InputActionAsset asset { get; }
-    public @InputManager()
+    public class @InputManager : IInputActionCollection, IDisposable
     {
-        asset = InputActionAsset.FromJson(@"{
+        public InputActionAsset asset { get; }
+        public @InputManager()
+        {
+            asset = InputActionAsset.FromJson(@"{
     ""name"": ""InputManager"",
     ""maps"": [
         {
@@ -112,119 +114,120 @@ public class @InputManager : IInputActionCollection, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Turn
-        m_Turn = asset.FindActionMap("Turn", throwIfNotFound: true);
-        m_Turn_SingleClick = m_Turn.FindAction("SingleClick", throwIfNotFound: true);
-        m_Turn_EndUnitSelection = m_Turn.FindAction("EndUnitSelection", throwIfNotFound: true);
-        m_Turn_StartUnitSelection = m_Turn.FindAction("StartUnitSelection", throwIfNotFound: true);
-        m_Turn_RightClick = m_Turn.FindAction("RightClick", throwIfNotFound: true);
-    }
+            // Turn
+            m_Turn = asset.FindActionMap("Turn", throwIfNotFound: true);
+            m_Turn_SingleClick = m_Turn.FindAction("SingleClick", throwIfNotFound: true);
+            m_Turn_EndUnitSelection = m_Turn.FindAction("EndUnitSelection", throwIfNotFound: true);
+            m_Turn_StartUnitSelection = m_Turn.FindAction("StartUnitSelection", throwIfNotFound: true);
+            m_Turn_RightClick = m_Turn.FindAction("RightClick", throwIfNotFound: true);
+        }
 
-    public void Dispose()
-    {
-        UnityEngine.Object.Destroy(asset);
-    }
-
-    public InputBinding? bindingMask
-    {
-        get => asset.bindingMask;
-        set => asset.bindingMask = value;
-    }
-
-    public ReadOnlyArray<InputDevice>? devices
-    {
-        get => asset.devices;
-        set => asset.devices = value;
-    }
-
-    public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
-
-    public bool Contains(InputAction action)
-    {
-        return asset.Contains(action);
-    }
-
-    public IEnumerator<InputAction> GetEnumerator()
-    {
-        return asset.GetEnumerator();
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
-
-    public void Enable()
-    {
-        asset.Enable();
-    }
-
-    public void Disable()
-    {
-        asset.Disable();
-    }
-
-    // Turn
-    private readonly InputActionMap m_Turn;
-    private ITurnActions m_TurnActionsCallbackInterface;
-    private readonly InputAction m_Turn_SingleClick;
-    private readonly InputAction m_Turn_EndUnitSelection;
-    private readonly InputAction m_Turn_StartUnitSelection;
-    private readonly InputAction m_Turn_RightClick;
-    public struct TurnActions
-    {
-        private @InputManager m_Wrapper;
-        public TurnActions(@InputManager wrapper) { m_Wrapper = wrapper; }
-        public InputAction @SingleClick => m_Wrapper.m_Turn_SingleClick;
-        public InputAction @EndUnitSelection => m_Wrapper.m_Turn_EndUnitSelection;
-        public InputAction @StartUnitSelection => m_Wrapper.m_Turn_StartUnitSelection;
-        public InputAction @RightClick => m_Wrapper.m_Turn_RightClick;
-        public InputActionMap Get() { return m_Wrapper.m_Turn; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(TurnActions set) { return set.Get(); }
-        public void SetCallbacks(ITurnActions instance)
+        public void Dispose()
         {
-            if (m_Wrapper.m_TurnActionsCallbackInterface != null)
+            UnityEngine.Object.Destroy(asset);
+        }
+
+        public InputBinding? bindingMask
+        {
+            get => asset.bindingMask;
+            set => asset.bindingMask = value;
+        }
+
+        public ReadOnlyArray<InputDevice>? devices
+        {
+            get => asset.devices;
+            set => asset.devices = value;
+        }
+
+        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+
+        public bool Contains(InputAction action)
+        {
+            return asset.Contains(action);
+        }
+
+        public IEnumerator<InputAction> GetEnumerator()
+        {
+            return asset.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void Enable()
+        {
+            asset.Enable();
+        }
+
+        public void Disable()
+        {
+            asset.Disable();
+        }
+
+        // Turn
+        private readonly InputActionMap m_Turn;
+        private ITurnActions m_TurnActionsCallbackInterface;
+        private readonly InputAction m_Turn_SingleClick;
+        private readonly InputAction m_Turn_EndUnitSelection;
+        private readonly InputAction m_Turn_StartUnitSelection;
+        private readonly InputAction m_Turn_RightClick;
+        public struct TurnActions
+        {
+            private @InputManager m_Wrapper;
+            public TurnActions(@InputManager wrapper) { m_Wrapper = wrapper; }
+            public InputAction @SingleClick => m_Wrapper.m_Turn_SingleClick;
+            public InputAction @EndUnitSelection => m_Wrapper.m_Turn_EndUnitSelection;
+            public InputAction @StartUnitSelection => m_Wrapper.m_Turn_StartUnitSelection;
+            public InputAction @RightClick => m_Wrapper.m_Turn_RightClick;
+            public InputActionMap Get() { return m_Wrapper.m_Turn; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(TurnActions set) { return set.Get(); }
+            public void SetCallbacks(ITurnActions instance)
             {
-                @SingleClick.started -= m_Wrapper.m_TurnActionsCallbackInterface.OnSingleClick;
-                @SingleClick.performed -= m_Wrapper.m_TurnActionsCallbackInterface.OnSingleClick;
-                @SingleClick.canceled -= m_Wrapper.m_TurnActionsCallbackInterface.OnSingleClick;
-                @EndUnitSelection.started -= m_Wrapper.m_TurnActionsCallbackInterface.OnEndUnitSelection;
-                @EndUnitSelection.performed -= m_Wrapper.m_TurnActionsCallbackInterface.OnEndUnitSelection;
-                @EndUnitSelection.canceled -= m_Wrapper.m_TurnActionsCallbackInterface.OnEndUnitSelection;
-                @StartUnitSelection.started -= m_Wrapper.m_TurnActionsCallbackInterface.OnStartUnitSelection;
-                @StartUnitSelection.performed -= m_Wrapper.m_TurnActionsCallbackInterface.OnStartUnitSelection;
-                @StartUnitSelection.canceled -= m_Wrapper.m_TurnActionsCallbackInterface.OnStartUnitSelection;
-                @RightClick.started -= m_Wrapper.m_TurnActionsCallbackInterface.OnRightClick;
-                @RightClick.performed -= m_Wrapper.m_TurnActionsCallbackInterface.OnRightClick;
-                @RightClick.canceled -= m_Wrapper.m_TurnActionsCallbackInterface.OnRightClick;
-            }
-            m_Wrapper.m_TurnActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @SingleClick.started += instance.OnSingleClick;
-                @SingleClick.performed += instance.OnSingleClick;
-                @SingleClick.canceled += instance.OnSingleClick;
-                @EndUnitSelection.started += instance.OnEndUnitSelection;
-                @EndUnitSelection.performed += instance.OnEndUnitSelection;
-                @EndUnitSelection.canceled += instance.OnEndUnitSelection;
-                @StartUnitSelection.started += instance.OnStartUnitSelection;
-                @StartUnitSelection.performed += instance.OnStartUnitSelection;
-                @StartUnitSelection.canceled += instance.OnStartUnitSelection;
-                @RightClick.started += instance.OnRightClick;
-                @RightClick.performed += instance.OnRightClick;
-                @RightClick.canceled += instance.OnRightClick;
+                if (m_Wrapper.m_TurnActionsCallbackInterface != null)
+                {
+                    @SingleClick.started -= m_Wrapper.m_TurnActionsCallbackInterface.OnSingleClick;
+                    @SingleClick.performed -= m_Wrapper.m_TurnActionsCallbackInterface.OnSingleClick;
+                    @SingleClick.canceled -= m_Wrapper.m_TurnActionsCallbackInterface.OnSingleClick;
+                    @EndUnitSelection.started -= m_Wrapper.m_TurnActionsCallbackInterface.OnEndUnitSelection;
+                    @EndUnitSelection.performed -= m_Wrapper.m_TurnActionsCallbackInterface.OnEndUnitSelection;
+                    @EndUnitSelection.canceled -= m_Wrapper.m_TurnActionsCallbackInterface.OnEndUnitSelection;
+                    @StartUnitSelection.started -= m_Wrapper.m_TurnActionsCallbackInterface.OnStartUnitSelection;
+                    @StartUnitSelection.performed -= m_Wrapper.m_TurnActionsCallbackInterface.OnStartUnitSelection;
+                    @StartUnitSelection.canceled -= m_Wrapper.m_TurnActionsCallbackInterface.OnStartUnitSelection;
+                    @RightClick.started -= m_Wrapper.m_TurnActionsCallbackInterface.OnRightClick;
+                    @RightClick.performed -= m_Wrapper.m_TurnActionsCallbackInterface.OnRightClick;
+                    @RightClick.canceled -= m_Wrapper.m_TurnActionsCallbackInterface.OnRightClick;
+                }
+                m_Wrapper.m_TurnActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @SingleClick.started += instance.OnSingleClick;
+                    @SingleClick.performed += instance.OnSingleClick;
+                    @SingleClick.canceled += instance.OnSingleClick;
+                    @EndUnitSelection.started += instance.OnEndUnitSelection;
+                    @EndUnitSelection.performed += instance.OnEndUnitSelection;
+                    @EndUnitSelection.canceled += instance.OnEndUnitSelection;
+                    @StartUnitSelection.started += instance.OnStartUnitSelection;
+                    @StartUnitSelection.performed += instance.OnStartUnitSelection;
+                    @StartUnitSelection.canceled += instance.OnStartUnitSelection;
+                    @RightClick.started += instance.OnRightClick;
+                    @RightClick.performed += instance.OnRightClick;
+                    @RightClick.canceled += instance.OnRightClick;
+                }
             }
         }
-    }
-    public TurnActions @Turn => new TurnActions(this);
-    public interface ITurnActions
-    {
-        void OnSingleClick(InputAction.CallbackContext context);
-        void OnEndUnitSelection(InputAction.CallbackContext context);
-        void OnStartUnitSelection(InputAction.CallbackContext context);
-        void OnRightClick(InputAction.CallbackContext context);
+        public TurnActions @Turn => new TurnActions(this);
+        public interface ITurnActions
+        {
+            void OnSingleClick(InputAction.CallbackContext context);
+            void OnEndUnitSelection(InputAction.CallbackContext context);
+            void OnStartUnitSelection(InputAction.CallbackContext context);
+            void OnRightClick(InputAction.CallbackContext context);
+        }
     }
 }

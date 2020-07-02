@@ -1,33 +1,31 @@
-﻿using DefaultNamespace;
+﻿using Tiles;
 using UnityEditor;
 using UnityEngine;
-[CustomEditor(typeof(TileController))]
-public class TileEditor : Editor
+
+namespace Editor
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(TileController))]
+    public class TileEditor : UnityEditor.Editor
     {
-        base.OnInspectorGUI();
-        TileController tileController = (TileController) target;
-        if (GUILayout.Button("EndTurn"))
+        public override void OnInspectorGUI()
         {
-            tileController.EndTurn();
-        }
-        if (GUILayout.Button("RefresIUnitsLists"))
-        {
-            tileController.tile.RefreshIUnitList();
-            Debug.Log("def " + tileController.tile.Defenders.Count);
-            Debug.Log("att" + tileController.tile.EnemyAtackers.Count);
-            Debug.Log("gath" + tileController.tile.Gatherers.Count);
-        }
-
-        if (GUILayout.Button("CheckState"))
-        {
-            tileController.stateController.CheckState();
-            Debug.Log("Actual Tile State" + tileController.tileState);
-
-        }
+            base.OnInspectorGUI();
+            TileController tileController = (TileController) target;
+            if (GUILayout.Button("EndTurn"))
+            {
+                tileController.EndTurn();
+            }
+            if (GUILayout.Button("Refresh IUnits Lists"))
+            {
+                tileController.tile.RefreshIUnitList();
+                Debug.Log("def " + tileController.tile.Defenders.Count);
+                Debug.Log("att" + tileController.tile.EnemyAtackers.Count);
+                Debug.Log("gath" + tileController.tile.Gatherers.Count);
+            }
+            
         
         
             
+        }
     }
 }

@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Units
 {
     public interface IUnit
     {
         bool HasAttacked();
-        void Attack(AbstractUnit receiveAttack);
+        IEnumerator AttackCoroutine(AbstractUnit attackReceiver, bool bUnitAlive);
         void TakeDamage(int powerLevel);
         int getPowerLever();
         void AddToTile(GameObject tile);
         UnitController UnitController { get; set; }
         bool Alive { get; set; }
+        void Attack(IUnit attackReceiver);
     }
 }

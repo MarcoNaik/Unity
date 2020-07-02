@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace DefaultNamespace
+namespace Units
 {
     public abstract class AbstractUnit : MonoBehaviour, IUnit
     {
@@ -15,15 +15,23 @@ namespace DefaultNamespace
         private bool Attacked { get; set;}
         public bool Alive { get; set;}
         
+
+        private UnitMovementController movementController;
+        
            
         private Rigidbody rb;
+        private Collider _collider;
 
 
         private void Awake()
         {
+            _collider = GetComponent<Collider>();
             UnitController = GetComponent<UnitController>();
+            movementController = GetComponent<UnitMovementController>();
             CurrentHP = maxHP;
             rb = GetComponent<Rigidbody>();
+            Alive = true;
+            Attacked = false;
         }
 
         public bool HasAttacked()
@@ -38,40 +46,65 @@ namespace DefaultNamespace
         }
 
 
-        public void Attack(AbstractUnit attackReceiver)
+        public void Attack(IUnit attackReceiver)
         {
-            Vector3 startPos = transform.position;
-            Move(attackReceiver.transform.position, 0.2f);
             attackReceiver.TakeDamage(powerLevel);
             Attacked = true;
-            Move(startPos, 0.1f);
-            
-            
         }
-
-        private void Move(Vector3 endPos, float threshold)
+        public IEnumerator AttackCoroutine(AbstractUnit attackReceiver, bool bUnitAlive)
         {
+            Vector3 endPos = attackReceiver.transform.position;
             Vector3 startPos = transform.position;
             float distance = (startPos - endPos).magnitude;
-            Vector3 directionNorm = (startPos - endPos).normalized;
-            while(distance>threshold)
+            Vector3 directionNorm = (endPos - startPos).normalized;
+            float speed = 0.3f;
+            
+            while (distance > 0.2f)
             {
-                transform.position += directionNorm * Time.fixedDeltaTime;
-                directionNorm = (startPos - endPos).normalized;
-                distance = (startPos - endPos).magnitude;
+                Vector3 position = transform.position;
+                
+                directionNorm = (endPos - position).normalized;
+                distance = (endPos - position).magnitude;
+                
+                transform.position += directionNorm *speed* Time.fixedDeltaTime;
+                
+                
+                yield return null;
             }
+
+           
+            if (!bUnitAlive) StartCoroutine(attackReceiver.DieCoroutine(directionNorm));
+            
+            
+            
+            distance = (transform.position - startPos).magnitude;
+            while (distance>0.01f)
+            {
+                Vector3 position = transform.position;
+                
+                directionNorm = (startPos- position).normalized;
+                distance = (startPos- position).magnitude;
+
+                transform.position += directionNorm * speed * Time.fixedDeltaTime;
+                
+                yield return null;
+            }
+            
         }
         
+
+
         public void TakeDamage(int powerLevel)
         {
             CurrentHP -= powerLevel;
-            if (CurrentHP <= 0) Die();
+            if (CurrentHP <= 0) Alive = false;
         }
-        private void Die()
+        private IEnumerator DieCoroutine(Vector3 directionNorm)
         {
-            Alive = false;
-            rb.GetComponent<Collider>().enabled = false;
-            rb.AddForce(Random.Range(-100,100),100, Random.Range(-100,100));
+            directionNorm.y = 1;
+            _collider.enabled = false;
+            rb.AddForce(directionNorm*200);
+            yield break;
         }
         
         public abstract void AddToTile(GameObject tile);

@@ -1,23 +1,25 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using DefaultNamespace;
+﻿using MapGen;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(TileMapGenerator))]
-public class TileMapGeneratorEditor : Editor
+namespace Editor
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(TileMapGenerator))]
+    public class TileMapGeneratorEditor : UnityEditor.Editor
     {
-        base.OnInspectorGUI();
-        TileMapGenerator mapGenerator = (TileMapGenerator) target;
-        
-        if (GUILayout.Button("Generate map"))
+        public override void OnInspectorGUI()
         {
-            mapGenerator.GenerateMap();
-        }
+            base.OnInspectorGUI();
+            TileMapGenerator mapGenerator = (TileMapGenerator) target;
+        
+            if (GUILayout.Button("Generate map."))
+            {
+                mapGenerator.GenerateMap();
+            }
         
         
         
             
+        }
     }
 }

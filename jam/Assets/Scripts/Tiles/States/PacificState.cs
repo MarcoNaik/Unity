@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Units;
+using UnityEngine;
 
-namespace DefaultNamespace
+namespace Tiles.States
 {
     
     public class PacificState : AbstractState

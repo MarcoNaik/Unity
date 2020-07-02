@@ -1,24 +1,25 @@
-﻿using System;
-using DefaultNamespace;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class UnitController : MonoBehaviour
+namespace Units
 {
-    public AbstractUnit unit;
-
-    public Player Owner { get; set; }
-
-    private UnitMovementController movement;
-
-
-    private void Awake()
+    public class UnitController : MonoBehaviour
     {
-        movement = GetComponent<UnitMovementController>();
-    }
+        public AbstractUnit unit;
+
+        public Player Owner;
+
+        private UnitMovementController movement;
 
 
-    public void MoveTo(GameObject tileClicked, Vector3 planePosMouse)
-    {
-        movement.MoveTo(tileClicked,planePosMouse);
+        private void Awake()
+        {            
+            movement = GetComponent<UnitMovementController>();
+        }
+
+
+        public void MoveTo(GameObject tileClicked, Vector3 planePosMouse)
+        {
+            movement.MoveToTile(tileClicked,planePosMouse);
+        }
     }
 }

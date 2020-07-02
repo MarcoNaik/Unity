@@ -1,8 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using UnityEngine;
-
-namespace DefaultNamespace
+﻿namespace Tiles.TileTypes
 {
     public class FoodTile : AbstractTile
     {

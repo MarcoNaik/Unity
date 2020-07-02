@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CoroutineManager.cs" />
      <Compile Include="Assets\Scripts\Inputs\ClickPositionManager.cs" />
      <Compile Include="Assets\Scripts\Inputs\Commands\Command.cs" />
      <Compile Include="Assets\Scripts\Inputs\Commands\EndSelectionCommand.cs" />
@@ -72,14 +73,16 @@
      <Compile Include="Assets\Scripts\MapGen\TileMapGenerator.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\ResourceInventory.cs" />
+     <Compile Include="Assets\Scripts\TaskManager.cs" />
      <Compile Include="Assets\Scripts\Tiles\AbstractTile.cs" />
+     <Compile Include="Assets\Scripts\Tiles\CombatManager.cs" />
      <Compile Include="Assets\Scripts\Tiles\ITile.cs" />
+     <Compile Include="Assets\Scripts\Tiles\Picker.cs" />
+     <Compile Include="Assets\Scripts\Tiles\StateController.cs" />
      <Compile Include="Assets\Scripts\Tiles\States\AbstractState.cs" />
      <Compile Include="Assets\Scripts\Tiles\States\BattleState.cs" />
-     <Compile Include="Assets\Scripts\Tiles\States\CombatManager.cs" />
      <Compile Include="Assets\Scripts\Tiles\States\ITileState.cs" />
      <Compile Include="Assets\Scripts\Tiles\States\PacificState.cs" />
-     <Compile Include="Assets\Scripts\Tiles\States\StateController.cs" />
      <Compile Include="Assets\Scripts\Tiles\States\WildCombatState.cs" />
      <Compile Include="Assets\Scripts\Tiles\States\WildPacificState.cs" />
      <Compile Include="Assets\Scripts\Tiles\States\WildState.cs" />

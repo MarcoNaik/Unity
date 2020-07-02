@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace DefaultNamespace
+﻿namespace Tiles.TileTypes
 {
     public class MaterialsTile : AbstractTile
     {

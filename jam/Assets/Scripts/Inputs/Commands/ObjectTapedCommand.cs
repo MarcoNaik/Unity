@@ -1,27 +1,30 @@
 ﻿using UnityEngine;
 
-public class ObjectTapedCommand : Command
+namespace Inputs.Commands
 {
-    private RTSUnitManager rtsum;
-
-    private void Awake()
+    public class ObjectTapedCommand : Command
     {
-        rtsum = GetComponent<RTSUnitManager>();
-    }
+        private RTSUnitManager rtsum;
 
-    public override void Excecute()
-    {
-        GetComponent<DrawSquare>().enabled = false;
-        GameObject taped = ClickPositionManager.ObjectClicked();
-        Debug.Log("we tapped" + taped.name);
-        if (taped.layer == 9)
+        private void Awake()
         {
-            rtsum.AddUnitByTap(taped);
-            
+            rtsum = GetComponent<RTSUnitManager>();
         }
-        if (taped.layer == 8)
+
+        public override void Excecute()
         {
-            //TileTaped(taped);
+            GetComponent<DrawSquare>().enabled = false;
+            GameObject taped = ClickPositionManager.ObjectClicked();
+            Debug.Log("we tapped" + taped.name);
+            if (taped.layer == 9)
+            {
+                rtsum.AddUnitByTap(taped);
+            
+            }
+            if (taped.layer == 8)
+            {
+                //TileTaped(taped);
+            }
         }
     }
 }

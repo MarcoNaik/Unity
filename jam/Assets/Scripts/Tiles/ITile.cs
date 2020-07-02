@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
+using Tiles.States;
+using Units;
 
-namespace DefaultNamespace
+namespace Tiles
 {
     public interface ITile
     {
@@ -10,7 +11,8 @@ namespace DefaultNamespace
         List<IUnit> EnemyAtackers { get;}
 
         int TileTier { get; }
-        
+        CombatManager CombatManager { get; set; }
+
         void DeliverThisResource(int resourcesToDeliver);
 
         void RefreshIUnitList();

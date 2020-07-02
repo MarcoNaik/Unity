@@ -1,142 +1,144 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Units;
 using UnityEngine;
 
-public class RTSUnitManager : MonoBehaviour
+namespace Inputs
 {
-    private List<GameObject> UnitsSelected;
+    public class RTSUnitManager : MonoBehaviour
+    {
+        private List<GameObject> UnitsSelected;
 
-    private Vector3 selectedStartPos;
+        private Vector3 selectedStartPos;
     
-    private MeshCollider selectionBox;
-    private Mesh selectionMesh;
+        private MeshCollider selectionBox;
+        private Mesh selectionMesh;
 
-private void Awake()
-    {
-        UnitsSelected = new List<GameObject>();
-    }
-
-    public void AddUnitByTap(GameObject unit)
-    {
-        if (!Input.GetKey(KeyCode.LeftShift))
+        private void Awake()
         {
-            UnitsSelected.Clear();
-        } 
-        UnitsSelected.Add(unit);
-        Debug.Log("we have selected " + UnitsSelected[0].name);
-    }
-    
-    public void StartUnitSelectionAt(Vector3 planePosMouse)
-    {
-        GetComponent<DrawSquare>().enabled = true;
-        selectedStartPos = planePosMouse;
-    }
-    
-    public void EndUnitSelectionAt(Vector3 planePosMouse)
-    {
-        if (!Input.GetKey(KeyCode.LeftShift))
-        {
-           UnitsSelected.Clear();
+            UnitsSelected = new List<GameObject>();
         }
-        GetComponent<DrawSquare>().enabled = false;
+
+        public void AddUnitByTap(GameObject unit)
+        {
+            if (!Input.GetKey(KeyCode.LeftShift))
+            {
+                UnitsSelected.Clear();
+            } 
+            UnitsSelected.Add(unit);
+            Debug.Log("we have selected " + UnitsSelected[0].name);
+        }
+    
+        public void StartUnitSelectionAt(Vector3 planePosMouse)
+        {
+            GetComponent<DrawSquare>().enabled = true;
+            selectedStartPos = planePosMouse;
+        }
+    
+        public void EndUnitSelectionAt(Vector3 planePosMouse)
+        {
+            if (!Input.GetKey(KeyCode.LeftShift))
+            {
+                UnitsSelected.Clear();
+            }
+            GetComponent<DrawSquare>().enabled = false;
         
-        selectionMesh = generateSelectionMesh(getBoundingBox(selectedStartPos, planePosMouse));
-        selectionBox = gameObject.AddComponent<MeshCollider>();
-        selectionBox.sharedMesh = selectionMesh;
-        selectionBox.convex = true;
-        selectionBox.isTrigger = true;
+            selectionMesh = generateSelectionMesh(getBoundingBox(selectedStartPos, planePosMouse));
+            selectionBox = gameObject.AddComponent<MeshCollider>();
+            selectionBox.sharedMesh = selectionMesh;
+            selectionBox.convex = true;
+            selectionBox.isTrigger = true;
         
-        Destroy(selectionBox, 0.02f);
+            Destroy(selectionBox, 0.02f);
 
-    }
+        }
     
-    private void OnTriggerEnter(Collider other)
-    {
-        UnitsSelected.Add(other.gameObject);
-        Debug.Log(other.gameObject.name + "added to selected units");
-    }
+        private void OnTriggerEnter(Collider other)
+        {
+            UnitsSelected.Add(other.gameObject);
+            Debug.Log(other.gameObject.name + "added to selected units");
+        }
     
-    Vector3[] getBoundingBox(Vector3 p1,Vector3 p2)
-    {
-        Vector3 newP1;
-        Vector3 newP2;
-        Vector3 newP3;
-        Vector3 newP4;
-
-        if (p1.x < p2.x) //if p1 is to the left of p2
+        Vector3[] getBoundingBox(Vector3 p1,Vector3 p2)
         {
-            if (p1.y > p2.y) // if p1 is above p2
+            Vector3 newP1;
+            Vector3 newP2;
+            Vector3 newP3;
+            Vector3 newP4;
+
+            if (p1.x < p2.x) //if p1 is to the left of p2
             {
-                newP1 = p1;
-                newP2 = new Vector3(p2.x, p1.y, p1.z);
-                newP3 = new Vector3(p1.x, p2.y, p2.z);
-                newP4 = p2;
+                if (p1.y > p2.y) // if p1 is above p2
+                {
+                    newP1 = p1;
+                    newP2 = new Vector3(p2.x, p1.y, p1.z);
+                    newP3 = new Vector3(p1.x, p2.y, p2.z);
+                    newP4 = p2;
+                }
+                else //if p1 is below p2
+                {
+                    newP1 = new Vector3(p1.x, p2.y, p2.z);
+                    newP2 = p2;
+                    newP3 = p1;
+                    newP4 = new Vector3(p2.x, p1.y, p1.z);
+                }
             }
-            else //if p1 is below p2
+            else //if p1 is to the right of p2
             {
-                newP1 = new Vector3(p1.x, p2.y, p2.z);
-                newP2 = p2;
-                newP3 = p1;
-                newP4 = new Vector3(p2.x, p1.y, p1.z);
+                if (p1.y > p2.y) // if p1 is above p2
+                {
+                    newP1 = new Vector3(p2.x, p1.y, p1.z);
+                    newP2 = p1;
+                    newP3 = p2;
+                    newP4 = new Vector3(p1.x, p2.y, p2.z);
+                }
+                else //if p1 is below p2
+                {
+                    newP1 = p2;
+                    newP2 = new Vector3(p1.x, p2.y, p2.z);
+                    newP3 = new Vector3(p2.x, p1.y, p1.z);
+                    newP4 = p1;
+                }
+
             }
-        }
-        else //if p1 is to the right of p2
-        {
-            if (p1.y > p2.y) // if p1 is above p2
-            {
-                newP1 = new Vector3(p2.x, p1.y, p1.z);
-                newP2 = p1;
-                newP3 = p2;
-                newP4 = new Vector3(p1.x, p2.y, p2.z);
-            }
-            else //if p1 is below p2
-            {
-                newP1 = p2;
-                newP2 = new Vector3(p1.x, p2.y, p2.z);
-                newP3 = new Vector3(p2.x, p1.y, p1.z);
-                newP4 = p1;
-            }
+
+            Vector3[] corners = { newP1, newP2, newP3, newP4 };
+            return corners;
 
         }
-
-        Vector3[] corners = { newP1, newP2, newP3, newP4 };
-        return corners;
-
-    }
     
-    Mesh generateSelectionMesh(Vector3[] corners)
-    {
-        Vector3[] verts = new Vector3[8];
-        int[] tris = { 0, 1, 2, 2, 1, 3, 4, 6, 0, 0, 6, 2, 6, 7, 2, 2, 7, 3, 7, 5, 3, 3, 5, 1, 5, 0, 1, 1, 4, 0, 4, 5, 6, 6, 5, 7 }; //map the tris of our cube
-
-        for(int i = 0; i < 4; i++)
+        Mesh generateSelectionMesh(Vector3[] corners)
         {
-            verts[i] = corners[i];
+            Vector3[] verts = new Vector3[8];
+            int[] tris = { 0, 1, 2, 2, 1, 3, 4, 6, 0, 0, 6, 2, 6, 7, 2, 2, 7, 3, 7, 5, 3, 3, 5, 1, 5, 0, 1, 1, 4, 0, 4, 5, 6, 6, 5, 7 }; //map the tris of our cube
+
+            for(int i = 0; i < 4; i++)
+            {
+                verts[i] = corners[i];
+            }
+
+            for(int j = 4; j < 8; j++)
+            {
+                verts[j] = corners[j - 4] + Vector3.up * 100.0f;
+            }
+
+            Mesh mesh = new Mesh();
+            mesh.vertices = verts;
+            mesh.triangles = tris;
+
+            return mesh;
         }
 
-        for(int j = 4; j < 8; j++)
+        public void MoveUnitsTo(GameObject tileClicked, Vector3 planePosMouse)
         {
-            verts[j] = corners[j - 4] + Vector3.up * 100.0f;
-        }
-
-        Mesh mesh = new Mesh();
-        mesh.vertices = verts;
-        mesh.triangles = tris;
-
-        return mesh;
-    }
-
-    public void MoveUnitsTo(GameObject tileClicked, Vector3 planePosMouse)
-    {
-        if (UnitsSelected.Count == 0)
-        {
-            Debug.Log("there are not unit selected");
-            return;
-        }
-        foreach (GameObject unit in UnitsSelected)
-        {
-            unit.GetComponent<UnitController>().MoveTo(tileClicked, planePosMouse);
+            if (UnitsSelected.Count == 0)
+            {
+                Debug.Log("there are not unit selected");
+                return;
+            }
+            foreach (GameObject unit in UnitsSelected)
+            {
+                unit.GetComponent<UnitController>().MoveTo(tileClicked, planePosMouse);
+            }
         }
     }
 }

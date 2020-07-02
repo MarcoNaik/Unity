@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+public class Player: MonoBehaviour
 {
-    public class Player: MonoBehaviour
-    {
-        public ResourceInventory resourceManager;
-    }
+    public ResourceInventory resourceManager;
 }

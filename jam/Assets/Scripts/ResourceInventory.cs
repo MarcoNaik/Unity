@@ -1,22 +1,19 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+public class ResourceInventory  : MonoBehaviour
 {
-    public class ResourceInventory  : MonoBehaviour
+    [SerializeField]
+    private int materials;
+    [SerializeField]
+    private int food;
+
+    public void addMaterials(int amount)
     {
-        [SerializeField]
-        private int materials;
-        [SerializeField]
-        private int food;
+        materials+=amount;
+    }
 
-        public void addMaterials(int amount)
-        {
-            materials+=amount;
-        }
-
-        public void addFood(int amount)
-        {
-            food += amount;
-        }
+    public void addFood(int amount)
+    {
+        food += amount;
     }
 }

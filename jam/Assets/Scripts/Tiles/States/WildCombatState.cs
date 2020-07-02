@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-
-namespace DefaultNamespace
+﻿namespace Tiles.States
 {
     class WildCombatState : AbstractState
     {

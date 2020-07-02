@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace
+﻿namespace Units
 {
     public interface IGatherer
     {
