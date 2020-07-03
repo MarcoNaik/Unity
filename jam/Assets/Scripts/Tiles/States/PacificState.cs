@@ -21,6 +21,7 @@ namespace Tiles.States
             if (tileTier == 0)
             {
                 Debug.LogWarning("this tile has tier level 0!");
+                return;
             }
             foreach (IUnit unit in thisTile.Gatherers)
             {

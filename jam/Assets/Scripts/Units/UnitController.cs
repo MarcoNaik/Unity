@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.Rendering;
+using UnityEngine;
 
 namespace Units
 {
@@ -10,7 +11,6 @@ namespace Units
 
         private UnitMovementController movement;
 
-
         private void Awake()
         {            
             movement = GetComponent<UnitMovementController>();
@@ -21,5 +21,6 @@ namespace Units
         {
             movement.MoveToTile(tileClicked,planePosMouse);
         }
+        
     }
 }

@@ -34,7 +34,7 @@ namespace Inputs
 
         private void OnStartUnitSelection(InputAction.CallbackContext context)
         {
-            var value = context.ReadValue<float>();
+            //var value = context.ReadValue<float>();
             Debug.Log("we are starting holding"); 
             if (startSelectionInput != null)
             {
@@ -44,7 +44,7 @@ namespace Inputs
 
         private void OnEndUnitSelection(InputAction.CallbackContext context)
         {
-            var value = context.ReadValue<float>();
+            //var value = context.ReadValue<float>();
             Debug.Log("we have ended holding click"); 
             if (endSelectionInput!= null)
             {
@@ -54,7 +54,7 @@ namespace Inputs
 
         private void OnRightClick(InputAction.CallbackContext context)
         {
-            var value = context.ReadValue<float>();
+            //var value = context.ReadValue<float>();
             Debug.Log("we are right clicking"); 
             if (rightClickInput != null)
             {
@@ -63,8 +63,7 @@ namespace Inputs
         }
         private void OnSingleClick(InputAction.CallbackContext context)
         {
-            var value = context.ReadValue<float>();
-            Debug.Log("we are tapping"); 
+            //var value = context.ReadValue<float>();
             if (tapInput != null)
             {
                 tapInput.Excecute();

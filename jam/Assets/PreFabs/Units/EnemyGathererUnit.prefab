@@ -154,3 +154,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerLevel: 30
   maxHP: 100
+  moveRange: 1

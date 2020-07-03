@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Tiles;
 using UnityEngine;
 
 namespace MapGen
@@ -12,6 +14,16 @@ namespace MapGen
         public bool pickByPercentage;
     
         private int mapSize;
+
+        private GameController gameController;
+
+
+        private void Awake()
+        {
+            gameController = GetComponentInParent<GameController>();
+            
+        }
+        
 
         public void GenerateMap()
         {
@@ -32,13 +44,16 @@ namespace MapGen
             {
                 if(pickByPercentage)
                 {
-                    tempGO = Instantiate(distribution.PickByPercentage());
+                    tempGO = Instantiate(distribution.PickByPercentage(),transform);
                 }
                 else
                 {
-                    tempGO = Instantiate(distribution.PickByQuantity(mapSize));
+                    tempGO = Instantiate(distribution.PickByQuantity(mapSize), transform);
                     mapSize--;
                 }
+
+                
+                gameController.AddHex(tempGO);
                 tempGO.transform.position = position + new Vector3(i, 0, 0);
             }
 

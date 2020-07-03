@@ -11,7 +11,11 @@ namespace Units
         
         public int powerLevel;
         public int maxHP;
+        public int moveRange;
         private int CurrentHP { get; set; }
+        public int CurrentMoveRange { get; set; }
+        
+        
         private bool Attacked { get; set;}
         public bool Alive { get; set;}
         
@@ -22,6 +26,11 @@ namespace Units
         private Rigidbody rb;
         private Collider _collider;
 
+        public void CleanAttack()
+        {
+            Attacked = false;
+        }
+
 
         private void Awake()
         {
@@ -29,6 +38,7 @@ namespace Units
             UnitController = GetComponent<UnitController>();
             movementController = GetComponent<UnitMovementController>();
             CurrentHP = maxHP;
+            CurrentMoveRange = moveRange;
             rb = GetComponent<Rigidbody>();
             Alive = true;
             Attacked = false;
@@ -108,5 +118,11 @@ namespace Units
         }
         
         public abstract void AddToTile(GameObject tile);
+
+        public void ExitTile()
+        {
+            CurrentMoveRange--;
+            Debug.Log("current move range : " + CurrentMoveRange);
+        }
     }
 }

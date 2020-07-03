@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Units
 {
@@ -9,26 +10,31 @@ namespace Units
         
         private Vector3 directionNorm;
         private GameObject tileClicked;
-        
-        
+
+        private AbstractUnit unit;
         private float distance;
+        
+        private GameObject actualTile;
 
         [SerializeField] private float velocity;
 
         private void Awake()
         {
             velocity = 1f;
+            unit = GetComponent<UnitController>().unit;
         }
 
         public void MoveToTile(GameObject tileClicked, Vector3 planePosMouse)
         {
-            Debug.Log("vectorClikeao" + planePosMouse);
-            isMovingToTile = true;
-            this.tileClicked = tileClicked;
-            planeV3 = (planePosMouse);
+            Debug.Log("tile clicked " + tileClicked);
+            Debug.Log("actual tile " + actualTile);
+            if (tileClicked == actualTile || !(unit.CurrentMoveRange<=0))
+            {
+                isMovingToTile = true;
+                this.tileClicked = tileClicked;
+                planeV3 = (planePosMouse);
+            }
         }
-
-       
 
         private void FixedUpdate()
         {
@@ -36,36 +42,45 @@ namespace Units
             {
                 distance = (planeV3-transform.position).magnitude;
                 directionNorm = (planeV3-transform.position).normalized;
-                if (distance < 0.15f) isMovingToTile = false;
+                if (distance < 0.08f) isMovingToTile = false;
                 transform.position += directionNorm * velocity * Time.fixedDeltaTime;
             }
-            
-        
         }
         
         private void OnCollisionStay(Collision other)
         {
-            StopMovingIfOnTile(other);
+            if(other.collider.gameObject.layer == 9 && isMovingToTile)
+                StopMovingIfOnTile();
         }
         private void OnCollisionEnter(Collision other)
         {
-            StopMovingIfOnTile(other);
-        }
-
-        private void StopMovingIfOnTile(Collision other)
-        {
-            if (other.collider.gameObject.layer == 9 && isMovingToTile)
-            {
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position , Vector3.down, out hit, 10f, 8))
-                {
-                    if (hit.collider.gameObject == tileClicked)
-                    {
-                        isMovingToTile = false;
-                    }
-                }
+            if (other.gameObject.layer == 8)
+                actualTile = other.gameObject;
             
+            
+            if(other.gameObject.layer == 9 && isMovingToTile)
+                if(isMovingToTile)
+                    StopMovingIfOnTile();
+        }
+        private void OnCollisionExit(Collision other)
+        {
+            if (other.gameObject.layer == 8 && isMovingToTile)
+            {
+                unit.ExitTile();
+                if (unit.CurrentMoveRange <= 0)
+                {
+                    planeV3 = actualTile.transform.position;
+                }
             }
         }
+
+        private void StopMovingIfOnTile()
+        {
+            if (actualTile == tileClicked)
+            {
+                isMovingToTile = false;
+            }
+        }
+        
     }
 }

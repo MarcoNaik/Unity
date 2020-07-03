@@ -22,7 +22,7 @@ namespace Inputs
             GameObject objectClicked= null;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit,100))
             {
                 objectClicked = hit.collider.gameObject;
             }
@@ -34,7 +34,7 @@ namespace Inputs
             GameObject objectClicked= null;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit,100000,8))
+            if (Physics.Raycast(ray, out hit,100,1 << 8))
             {
                 objectClicked = hit.collider.gameObject;
             }

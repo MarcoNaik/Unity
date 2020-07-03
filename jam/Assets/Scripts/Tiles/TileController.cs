@@ -18,6 +18,8 @@ namespace Tiles
         private Queue<IEnumerator> Coroutines;
 
         private Task currentTask;
+        private Task setUp;
+        Transform bordersTransform;
 
         private void Awake()
         {
@@ -25,6 +27,7 @@ namespace Tiles
             Coroutines = new Queue<IEnumerator>();
             Owner = null;
             tileState= new WildState(tile);
+            bordersTransform = GetComponentInChildren<Borders>().transform;
         }
 
         private void FixedUpdate()
@@ -42,15 +45,41 @@ namespace Tiles
                 }
                 
             }
+            
+            
+            
         }
 
 
-        public void EndTurn()
+        private IEnumerator FinishEndTurnCoroutine()
         {
+            while (bordersTransform.position.y > 0)
+            {
+                bordersTransform.position+= Vector3.down * Time.deltaTime * 0.1f;
+                yield return null;
+            }
+        }
+        private IEnumerator EndTurnCoroutine()
+        {
+
+            while (bordersTransform.position.y < 0.3)
+            {
+                bordersTransform.position+= Vector3.up * Time.deltaTime* 0.1f;
+                yield return null;
+            }
+
             tile.RefreshIUnitList();
+            tile.ClearAttackers();
             stateController.CheckState();
             tileState.ResolveTurn();
-           
+            
+            addCoroutine(FinishEndTurnCoroutine());
+            
+        }
+        public void EndTurn()
+        {
+            addCoroutine(EndTurnCoroutine());
+            
         }
 
 

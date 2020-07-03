@@ -12,6 +12,7 @@ namespace Units
         void AddToTile(GameObject tile);
         UnitController UnitController { get; set; }
         bool Alive { get; set; }
+        void CleanAttack();
         void Attack(IUnit attackReceiver);
     }
 }

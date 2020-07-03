@@ -7,7 +7,7 @@ namespace Inputs
     public class RTSUnitManager : MonoBehaviour
     {
         private List<GameObject> UnitsSelected;
-
+        private GameController gameController;
         private Vector3 selectedStartPos;
     
         private MeshCollider selectionBox;
@@ -15,17 +15,21 @@ namespace Inputs
 
         private void Awake()
         {
+            gameController = GetComponentInParent<GameController>();
             UnitsSelected = new List<GameObject>();
         }
 
         public void AddUnitByTap(GameObject unit)
         {
-            if (!Input.GetKey(KeyCode.LeftShift))
+            if (unit.GetComponent<UnitController>().Owner == gameController.thisTurnPlayer)
             {
-                UnitsSelected.Clear();
-            } 
-            UnitsSelected.Add(unit);
-            Debug.Log("we have selected " + UnitsSelected[0].name);
+                if (!Input.GetKey(KeyCode.LeftShift))
+                {
+                    UnitsSelected.Clear();
+                } 
+                UnitsSelected.Add(unit);
+                Debug.Log("we have selected " + UnitsSelected[0].name);
+            }
         }
     
         public void StartUnitSelectionAt(Vector3 planePosMouse)
@@ -54,8 +58,13 @@ namespace Inputs
     
         private void OnTriggerEnter(Collider other)
         {
-            UnitsSelected.Add(other.gameObject);
-            Debug.Log(other.gameObject.name + "added to selected units");
+            GameObject unit = other.gameObject;
+            if (unit.GetComponent<UnitController>().Owner == gameController.thisTurnPlayer)
+            {
+                UnitsSelected.Add(unit);
+                Debug.Log(unit.name + "added to selected units");
+            }
+            
         }
     
         Vector3[] getBoundingBox(Vector3 p1,Vector3 p2)

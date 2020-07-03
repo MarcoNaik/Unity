@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Tiles.States;
 using Units;
 using UnityEngine;
@@ -49,5 +50,20 @@ namespace Tiles
    
         }
         public abstract void DeliverThisResource(int amount);
+
+        public void ClearAttackers()
+        {
+            ClearIUnitAttacked(Gatherers);
+            ClearIUnitAttacked(EnemyAtackers);
+            ClearIUnitAttacked(Defenders);
+        }
+
+        private void ClearIUnitAttacked(List<IUnit> thisList)
+        {
+            foreach (IUnit unit in thisList)
+            {
+                unit.CleanAttack();
+            }
+        }
     }
 }

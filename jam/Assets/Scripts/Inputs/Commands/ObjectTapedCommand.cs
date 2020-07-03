@@ -15,11 +15,14 @@ namespace Inputs.Commands
         {
             GetComponent<DrawSquare>().enabled = false;
             GameObject taped = ClickPositionManager.ObjectClicked();
-            Debug.Log("we tapped" + taped.name);
+            
+            Debug.Log("we tapped " + taped);
+            
+            if (taped==null) return;
+            
             if (taped.layer == 9)
             {
                 rtsum.AddUnitByTap(taped);
-            
             }
             if (taped.layer == 8)
             {
