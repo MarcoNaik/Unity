@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Inputs.Commands;
 using Units;
 using UnityEngine;
 
@@ -28,6 +29,12 @@ namespace Inputs
                     UnitsSelected.Clear();
                 } 
                 UnitsSelected.Add(unit);
+                
+                if (GetComponent<PlayerInput>().rightClickInput == GetComponent<SetDefaultSpawnPositionCommand>())
+                {
+                    GetComponent<PlayerInput>().rightClickInput = GetComponent<MoveUnitsCommand>();
+                }
+                
                 Debug.Log("we have selected " + UnitsSelected[0].name);
             }
         }
@@ -44,6 +51,12 @@ namespace Inputs
             {
                 UnitsSelected.Clear();
             }
+            
+            if (GetComponent<PlayerInput>().rightClickInput == GetComponent<SetDefaultSpawnPositionCommand>())
+            {
+                GetComponent<PlayerInput>().rightClickInput = GetComponent<MoveUnitsCommand>();
+            }
+            
             GetComponent<DrawSquare>().enabled = false;
         
             selectionMesh = generateSelectionMesh(getBoundingBox(selectedStartPos, planePosMouse));

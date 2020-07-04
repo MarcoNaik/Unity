@@ -38,7 +38,7 @@ namespace Units
             UnitController = GetComponent<UnitController>();
             movementController = GetComponent<UnitMovementController>();
             CurrentHP = maxHP;
-            CurrentMoveRange = moveRange;
+            CurrentMoveRange = 0;
             rb = GetComponent<Rigidbody>();
             Alive = true;
             Attacked = false;

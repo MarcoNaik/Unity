@@ -13,7 +13,7 @@ namespace Tiles
 
         public ITileState tileState;
 
-        private StateController stateController;
+        public AbstractStateController stateController;
 
         private Queue<IEnumerator> Coroutines;
 
@@ -23,7 +23,6 @@ namespace Tiles
 
         private void Awake()
         {
-            stateController = GetComponent<StateController>();
             Coroutines = new Queue<IEnumerator>();
             Owner = null;
             tileState= new WildState(tile);

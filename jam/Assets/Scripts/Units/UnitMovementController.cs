@@ -69,7 +69,7 @@ namespace Units
                 unit.ExitTile();
                 if (unit.CurrentMoveRange <= 0)
                 {
-                    planeV3 = actualTile.transform.position;
+                    planeV3 = actualTile.transform.position+ Vector3.up*0.3f;
                 }
             }
         }

@@ -2,18 +2,22 @@
 
 public class ResourceInventory  : MonoBehaviour
 {
-    [SerializeField]
-    private int materials;
-    [SerializeField]
-    private int food;
+   
+    public int Materials { get; private set; }
+    public int Food { get; private set; }
 
     public void addMaterials(int amount)
     {
-        materials+=amount;
+        Materials+=amount;
     }
 
     public void addFood(int amount)
     {
-        food += amount;
+        Food += amount;
+    }
+
+    public void removeFood(int unitCost)
+    {
+        Food -= unitCost;
     }
 }

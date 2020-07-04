@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     
     
     private List<GameObject> hexMap;
-    private int turn;
+    public static int turn;
 
     private void Awake()
     {

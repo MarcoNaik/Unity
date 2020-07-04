@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Tiles.TileTypes.Structures;
+using UnityEngine;
 
 namespace Inputs.Commands
 {
@@ -26,7 +27,14 @@ namespace Inputs.Commands
             }
             if (taped.layer == 8)
             {
-                //TileTaped(taped);
+                AbstractStructure structure = taped.GetComponent<AbstractStructure>();
+
+                if (structure != null)
+                {
+                    SetDefaultSpawnPositionCommand spawnPosCommand = GetComponent<SetDefaultSpawnPositionCommand>();
+                    spawnPosCommand.structure = structure;
+                    GetComponent<PlayerInput>().rightClickInput = spawnPosCommand;
+                }
             }
         }
     }

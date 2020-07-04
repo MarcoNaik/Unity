@@ -22,7 +22,7 @@ namespace Tiles
         public List<IUnit> EnemyAtackers { get; set; }
 
 
-        //private TileController tileController;
+        protected TileController tileController;
 
         private void Awake()
         {
@@ -31,7 +31,7 @@ namespace Tiles
             Gatherers = new List<IUnit>();
             Defenders = new List<IUnit>();
             EnemyAtackers = new List<IUnit>();
-            //tileController = GetComponent<TileController>();
+            tileController = GetComponent<TileController>();
         }
 
 
@@ -64,6 +64,11 @@ namespace Tiles
             {
                 unit.CleanAttack();
             }
+        }
+
+        public virtual void AttackStructure()
+        {
+            
         }
     }
 }
