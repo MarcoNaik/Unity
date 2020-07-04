@@ -16,7 +16,7 @@ namespace Inputs
 
         private void Awake()
         {
-            gameController = GetComponentInParent<GameController>();
+            gameController = FindObjectOfType<GameController>();
             UnitsSelected = new List<GameObject>();
         }
 

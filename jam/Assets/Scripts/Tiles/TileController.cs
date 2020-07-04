@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Tiles.States;
+using Tiles.StateControllers;
+using Tiles.StateControllers.States;
+using Tiles.Utilities;
 using UnityEngine;
 
 namespace Tiles
@@ -9,7 +11,8 @@ namespace Tiles
     public class TileController : MonoBehaviour
     { 
         public AbstractTile tile;
-        public Player Owner { get; set; }
+
+        public Player Owner;
 
         public ITileState tileState;
 
@@ -27,6 +30,7 @@ namespace Tiles
             Owner = null;
             tileState= new WildState(tile);
             bordersTransform = GetComponentInChildren<Borders>().transform;
+            //tile.enabled = true;
         }
 
         private void FixedUpdate()
@@ -42,11 +46,7 @@ namespace Tiles
                 {
                     currentTask = new Task(Coroutines.Dequeue());
                 }
-                
             }
-            
-            
-            
         }
 
 
@@ -71,7 +71,6 @@ namespace Tiles
             tile.ClearAttackers();
             stateController.CheckState();
             tileState.ResolveTurn();
-            
             addCoroutine(FinishEndTurnCoroutine());
             
         }

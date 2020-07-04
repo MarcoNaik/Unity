@@ -1,4 +1,5 @@
 ﻿using System;
+using Tiles.Utilities;
 using UnityEngine;
 
 namespace Units
@@ -28,7 +29,7 @@ namespace Units
         {
             Debug.Log("tile clicked " + tileClicked);
             Debug.Log("actual tile " + actualTile);
-            if (tileClicked == actualTile || !(unit.CurrentMoveRange<=0))
+            if (tileClicked == actualTile || unit.CurrentMoveRange>0)
             {
                 isMovingToTile = true;
                 this.tileClicked = tileClicked;
@@ -55,9 +56,13 @@ namespace Units
         private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.layer == 8)
+            {
                 actualTile = other.gameObject;
-            
-            
+                if (actualTile.GetComponent<StructureNeighbour>() != null)
+                    unit.CurrentMoveRange++;
+
+            }
+
             if(other.gameObject.layer == 9 && isMovingToTile)
                 if(isMovingToTile)
                     StopMovingIfOnTile();

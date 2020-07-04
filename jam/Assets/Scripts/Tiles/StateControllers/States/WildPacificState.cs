@@ -1,4 +1,4 @@
-﻿namespace Tiles.States
+﻿namespace Tiles.StateControllers.States
 {
     class WildPacificState : AbstractState
     {

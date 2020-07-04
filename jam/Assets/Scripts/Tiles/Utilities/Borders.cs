@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Borders : MonoBehaviour
+namespace Tiles.Utilities
 {
-   public Vector3 position;
-
-   private void Awake()
+   public class Borders : MonoBehaviour
    {
-      position = transform.position;
+      public Vector3 position;
+
+      private void Awake()
+      {
+         position = transform.position;
+      }
    }
 }

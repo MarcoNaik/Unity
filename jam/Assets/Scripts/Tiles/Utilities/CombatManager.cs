@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using Tiles.States;
 using Units;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Tiles
+namespace Tiles.Utilities
 {
     public class CombatManager : MonoBehaviour
     {

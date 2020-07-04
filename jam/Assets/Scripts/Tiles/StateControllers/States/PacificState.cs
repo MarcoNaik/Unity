@@ -1,7 +1,7 @@
 ﻿using Units;
 using UnityEngine;
 
-namespace Tiles.States
+namespace Tiles.StateControllers.States
 {
     
     public class PacificState : AbstractState

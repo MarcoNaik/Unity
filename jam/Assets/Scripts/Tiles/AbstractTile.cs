@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Tiles.States;
 using Tiles.TileTypes.Structures;
+using Tiles.Utilities;
 using Units;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ namespace Tiles
 
         protected TileController tileController;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             CombatManager = GetComponent<CombatManager>();
             UnitsOnTop = new List<GameObject>();

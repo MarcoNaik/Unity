@@ -1,4 +1,4 @@
-﻿namespace Tiles.TileTypes
+﻿namespace Tiles.TileTypes.ResourceDefault
 {
     public class DefaultTile : AbstractTile
     {

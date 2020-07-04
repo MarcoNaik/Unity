@@ -12,7 +12,8 @@ namespace Units
         private UnitMovementController movement;
 
         private void Awake()
-        {            
+        {
+            Owner = FindObjectOfType<GameController>().thisTurnPlayer;
             movement = GetComponent<UnitMovementController>();
         }
 

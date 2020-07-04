@@ -15,12 +15,13 @@ public class GameController : MonoBehaviour
 
     public UIManager UiManager;
     
-    
     private List<GameObject> hexMap;
     public static int turn;
 
     private void Awake()
     {
+        players[0] = Instantiate(players[0],transform);
+        players[1] = Instantiate(players[1],transform);
         hexMap = new List<GameObject>();
         mapGenerator = GetComponentInChildren<TileMapGenerator>();
         thisTurnPlayer = players[1];

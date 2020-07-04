@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Tiles.States
+namespace Tiles.StateControllers.States
 {
     
     public class BattleState: AbstractState

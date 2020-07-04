@@ -37,6 +37,7 @@ namespace Inputs.Commands
                 {
                     SetDefaultSpawnPositionCommand spawnPosCommand = GetComponent<SetDefaultSpawnPositionCommand>();
                     spawnPosCommand.structure = structure;
+                    Debug.Log("we have currently entered to the right click set position mode");
                     GetComponent<PlayerInput>().rightClickInput = spawnPosCommand;
                 }
             }

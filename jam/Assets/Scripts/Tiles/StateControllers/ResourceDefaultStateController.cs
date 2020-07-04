@@ -1,7 +1,8 @@
-﻿using Tiles.States;
+﻿using Tiles.StateControllers.States;
+using Tiles.Utilities;
 using Units;
 
-namespace Tiles
+namespace Tiles.StateControllers
 {
     public class ResourceDefaultStateController : AbstractStateController
     {

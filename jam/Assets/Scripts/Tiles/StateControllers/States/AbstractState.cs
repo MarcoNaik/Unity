@@ -1,4 +1,6 @@
-﻿namespace Tiles.States
+﻿using Tiles.Utilities;
+
+namespace Tiles.StateControllers.States
 {
     public abstract class AbstractState : ITileState
     {

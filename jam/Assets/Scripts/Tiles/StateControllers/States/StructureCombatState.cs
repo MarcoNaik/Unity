@@ -1,6 +1,4 @@
-﻿using Tiles.States;
-
-namespace Tiles
+﻿namespace Tiles.StateControllers.States
 {
     class StructureCombatState : BattleState
     {

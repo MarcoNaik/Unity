@@ -1,4 +1,6 @@
-﻿namespace Tiles
+﻿using Tiles.StateControllers.States;
+
+namespace Tiles.StateControllers
 {
     public class StructureStateController : AbstractStateController
     {

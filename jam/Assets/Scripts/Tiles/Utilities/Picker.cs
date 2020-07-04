@@ -3,7 +3,7 @@ using System.Linq;
 using Units;
 using UnityEngine;
 
-namespace Tiles
+namespace Tiles.Utilities
 {
     public static class Picker
     {
