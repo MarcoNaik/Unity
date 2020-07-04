@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 8621575290232565682}
   - component: {fileID: 6962712531937996763}
   - component: {fileID: 7882730964030872190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Village
-  m_TagString: Untagged
+  m_TagString: Village
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   - prefab: {fileID: 7065555741882444753, guid: dc0c4b10158c9354c9c8be746cf75f67,
       type: 3}
     cost: 10
+  menu: {fileID: 3502647587775703652, guid: c40a7d702edd89447bb1080275599544, type: 3}
 --- !u!114 &8621575290232565682
 MonoBehaviour:
   m_ObjectHideFlags: 0

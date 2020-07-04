@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ResourceInventory  : MonoBehaviour
 {
@@ -19,5 +20,10 @@ public class ResourceInventory  : MonoBehaviour
     public void removeFood(int unitCost)
     {
         Food -= unitCost;
+    }
+
+    private void Awake()
+    {
+        Food = 10000;
     }
 }

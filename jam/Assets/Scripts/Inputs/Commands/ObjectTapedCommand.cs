@@ -1,4 +1,5 @@
-﻿using Tiles.TileTypes.Structures;
+﻿using Tiles;
+using Tiles.TileTypes.Structures;
 using UnityEngine;
 
 namespace Inputs.Commands
@@ -6,10 +7,12 @@ namespace Inputs.Commands
     public class ObjectTapedCommand : Command
     {
         private RTSUnitManager rtsum;
+        private UIManager ui;
 
         private void Awake()
         {
             rtsum = GetComponent<RTSUnitManager>();
+            ui = GetComponentInParent<UIManager>();
         }
 
         public override void Excecute()
@@ -27,6 +30,7 @@ namespace Inputs.Commands
             }
             if (taped.layer == 8)
             {
+                ui.DisplayMenu(taped);
                 AbstractStructure structure = taped.GetComponent<AbstractStructure>();
 
                 if (structure != null)

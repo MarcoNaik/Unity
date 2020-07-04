@@ -100,6 +100,7 @@
      <Compile Include="Assets\Scripts\Tiles\Utilities\Borders.cs" />
      <Compile Include="Assets\Scripts\Tiles\Utilities\CombatManager.cs" />
      <Compile Include="Assets\Scripts\Tiles\Utilities\Picker.cs" />
+     <Compile Include="Assets\Scripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\Units\AbstractUnit.cs" />
      <Compile Include="Assets\Scripts\Units\AttackUnit.cs" />
      <Compile Include="Assets\Scripts\Units\Gatherer.cs" />
@@ -141,6 +142,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+     <Compile Include="Assets\VillageMenuController.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

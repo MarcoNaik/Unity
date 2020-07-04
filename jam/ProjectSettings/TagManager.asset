@@ -8,6 +8,7 @@ TagManager:
   - FoodTile
   - GathererUnit
   - AttackUnit
+  - Village
   layers:
   - Default
   - TransparentFX

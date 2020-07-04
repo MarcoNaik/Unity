@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
 
     public Player thisTurnPlayer;
     private TileMapGenerator mapGenerator;
+
+    public UIManager UiManager;
     
     
     private List<GameObject> hexMap;
@@ -48,6 +50,5 @@ public class GameController : MonoBehaviour
     {
         hexMap.Add(hex);
     }
-
 
 }

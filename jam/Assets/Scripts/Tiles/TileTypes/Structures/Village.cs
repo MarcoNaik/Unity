@@ -1,7 +1,11 @@
-﻿namespace Tiles.TileTypes.Structures
+﻿using UnityEngine;
+
+namespace Tiles.TileTypes.Structures
 {
     public class Village : AbstractStructure
     {
+
+        public GameObject menu;
         /*
          * spawn units
          * HP
@@ -26,19 +30,11 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         public override void DeliverThisResource(int amount)
         {
             
         }
+
+        
     }
 }
