@@ -14,9 +14,11 @@ namespace Tiles
 
         public Player Owner;
 
-        public ITileState tileState;
+        public AbstractState tileState;
 
         public AbstractStateController stateController;
+
+        public GameController gameController;
 
         private Queue<IEnumerator> Coroutines;
 
@@ -31,6 +33,7 @@ namespace Tiles
             tileState= new WildState(tile);
             bordersTransform = GetComponentInChildren<Borders>().transform;
             //tile.enabled = true;
+            gameController = FindObjectOfType<GameController>();
         }
 
         private void FixedUpdate()
@@ -71,6 +74,7 @@ namespace Tiles
             tile.ClearAttackers();
             stateController.CheckState();
             tileState.ResolveTurn();
+            gameController.RefreshPlayersUI();
             addCoroutine(FinishEndTurnCoroutine());
             
         }

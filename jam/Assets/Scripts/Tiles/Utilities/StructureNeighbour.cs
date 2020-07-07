@@ -8,7 +8,7 @@ namespace Tiles.Utilities
         public Player owner;
         private void Awake()
         {
-            owner = FindObjectOfType<GameController>().thisTurnPlayer;
+            owner = FindObjectOfType<GameController>().CurrentPlayer;
         }
     }
 }

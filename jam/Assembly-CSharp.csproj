@@ -58,6 +58,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Billboard.cs" />
+     <Compile Include="Assets\EditableText.cs" />
+     <Compile Include="Assets\HealthBar.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Inputs\ClickPositionManager.cs" />
      <Compile Include="Assets\Scripts\Inputs\Commands\Command.cs" />
@@ -96,20 +99,25 @@
      <Compile Include="Assets\Scripts\Tiles\TileTypes\ResourceDefault\FoodTile.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileTypes\ResourceDefault\MaterialsTile.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileTypes\Structures\AbstractStructure.cs" />
+     <Compile Include="Assets\Scripts\Tiles\TileTypes\Structures\Town.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileTypes\Structures\Village.cs" />
      <Compile Include="Assets\Scripts\Tiles\Utilities\Borders.cs" />
      <Compile Include="Assets\Scripts\Tiles\Utilities\CombatManager.cs" />
      <Compile Include="Assets\Scripts\Tiles\Utilities\Picker.cs" />
      <Compile Include="Assets\Scripts\Tiles\Utilities\StructureNeighbour.cs" />
+     <Compile Include="Assets\Scripts\UI and Menus\PlayerUI.cs" />
+     <Compile Include="Assets\Scripts\UI and Menus\Refreshable.cs" />
+     <Compile Include="Assets\Scripts\UI and Menus\TilePublicMenu.cs" />
+     <Compile Include="Assets\Scripts\UI and Menus\TurnUI.cs" />
      <Compile Include="Assets\Scripts\UI and Menus\UIManager.cs" />
+     <Compile Include="Assets\Scripts\UI and Menus\UnitPublicMenu.cs" />
      <Compile Include="Assets\Scripts\UI and Menus\VillageMenuController.cs" />
      <Compile Include="Assets\Scripts\Units\AbstractUnit.cs" />
-     <Compile Include="Assets\Scripts\Units\AttackUnit.cs" />
-     <Compile Include="Assets\Scripts\Units\Gatherer.cs" />
-     <Compile Include="Assets\Scripts\Units\IGatherer.cs" />
      <Compile Include="Assets\Scripts\Units\IUnit.cs" />
      <Compile Include="Assets\Scripts\Units\UnitController.cs" />
      <Compile Include="Assets\Scripts\Units\UnitMovementController.cs" />
+     <Compile Include="Assets\Scripts\Units\UnitTypes\AttackUnit.cs" />
+     <Compile Include="Assets\Scripts\Units\UnitTypes\Gatherer.cs" />
      <Compile Include="Assets\Scripts\Units\UnitTypes\RangeUnit.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

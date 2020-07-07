@@ -1,6 +1,8 @@
 ﻿using Tiles;
 using Tiles.TileTypes.Structures;
+using Units;
 using UnityEngine;
+using UnityEngine.WSA;
 
 namespace Inputs.Commands
 {
@@ -8,11 +10,13 @@ namespace Inputs.Commands
     {
         private RTSUnitManager rtsum;
         private UIManager ui;
+        private GameController gameController;
 
         private void Awake()
         {
             rtsum = GetComponent<RTSUnitManager>();
             ui = GetComponentInParent<UIManager>();
+            gameController = FindObjectOfType<GameController>();
         }
 
         public override void Excecute()
@@ -24,13 +28,30 @@ namespace Inputs.Commands
             
             if (taped==null) return;
             
-            if (taped.layer == 9)
+            if (taped.layer == 9) //unit
             {
+                if (taped.GetComponent<UnitController>().Owner == gameController.CurrentPlayer)
+                {
+                    ui.DisplayBothMenus(taped,"Unit");
+                }
+                else
+                {
+                    ui.DisplayPublicMenu(taped, "Unit");
+                }
                 rtsum.AddUnitByTap(taped);
             }
-            if (taped.layer == 8)
+            if (taped.layer == 8) //hex
             {
-                ui.DisplayMenu(taped);
+                rtsum.UnShowSelectedUI();
+                
+                if (taped.GetComponent<TileController>().Owner == gameController.CurrentPlayer)
+                {
+                    ui.DisplayBothMenus(taped,"Tile");
+                }
+                else
+                {
+                    ui.DisplayPublicMenu(taped,"Tile");
+                }
                 AbstractStructure structure = taped.GetComponent<AbstractStructure>();
 
                 if (structure != null)

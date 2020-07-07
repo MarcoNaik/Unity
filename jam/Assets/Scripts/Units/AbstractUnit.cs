@@ -12,13 +12,15 @@ namespace Units
         public int powerLevel;
         public int maxHP;
         public int moveRange;
-        private int CurrentHP { get; set; }
+        public int CurrentHP { get; set; }
         public int CurrentMoveRange { get; set; }
         
         
         private bool Attacked { get; set;}
         public bool Alive { get; set;}
-        
+
+
+        public HealthBar healthBar;
 
         private UnitMovementController movementController;
         
@@ -31,8 +33,13 @@ namespace Units
             Attacked = false;
         }
 
+        private void DealDamageToHealthBar(int damage)
+        {
+            healthBar.SetHealth(CurrentHP-damage);
+        }
 
-        private void Awake()
+
+        protected virtual void Awake()
         {
             _collider = GetComponent<Collider>();
             UnitController = GetComponent<UnitController>();
@@ -42,6 +49,7 @@ namespace Units
             rb = GetComponent<Rigidbody>();
             Alive = true;
             Attacked = false;
+            healthBar.SetMaxHealth(maxHP);
         }
 
         public bool HasAttacked()
@@ -82,8 +90,15 @@ namespace Units
                 yield return null;
             }
 
-           
-            if (!bUnitAlive) StartCoroutine(attackReceiver.DieCoroutine(directionNorm));
+
+            if (bUnitAlive)
+            {
+                attackReceiver.DealDamageToHealthBar(powerLevel);
+            }
+            else
+            {
+                StartCoroutine(attackReceiver.DieCoroutine(directionNorm));
+            }
             
             
             

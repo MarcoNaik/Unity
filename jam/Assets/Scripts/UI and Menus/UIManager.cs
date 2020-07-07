@@ -9,13 +9,17 @@ public class UIManager : MonoBehaviour
     public struct MenusPrefabs
     {
         public GameObject prefab;
-        public String prefabName;
+        public String prefabTag;
     }
-    public List<MenusPrefabs> menusPrefabs;
+    
+    public List<MenusPrefabs> privateMenusPrefabs;
+    public List<MenusPrefabs> publicMenusPrefabs;
 
-    private Dictionary<String, GameObject> poolMenus;
+    private Dictionary<String, GameObject> poolPrivatesMenus;
+    private Dictionary<String, GameObject> poolPublicMenus;
 
-    private GameObject currentMenu;
+    private GameObject currentPrivateMenu;
+    public GameObject currentPublicMenu;
     
     public GameObject currentObject;
     
@@ -23,37 +27,59 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        poolMenus = new Dictionary<string, GameObject>();
+        poolPrivatesMenus = new Dictionary<string, GameObject>();
+        poolPublicMenus = new Dictionary<string, GameObject>();
     }
 
 
     private void Start()
     {
-        foreach (MenusPrefabs menuPrefab in menusPrefabs)
+        foreach (MenusPrefabs menuPrefab in privateMenusPrefabs)
         {
-            currentMenu = Instantiate(menuPrefab.prefab, transform, false);
-            currentMenu.SetActive(false);
-            poolMenus.Add(menuPrefab.prefabName ,currentMenu);
+            currentPrivateMenu = Instantiate(menuPrefab.prefab, transform, false);
+            currentPrivateMenu.SetActive(false);
+            poolPrivatesMenus.Add(menuPrefab.prefabTag ,currentPrivateMenu);
+        }
+        
+        foreach (MenusPrefabs menuPrefab in publicMenusPrefabs)
+        {
+            currentPublicMenu = Instantiate(menuPrefab.prefab, transform, false);
+            currentPublicMenu.SetActive(false);
+            poolPublicMenus.Add(menuPrefab.prefabTag ,currentPublicMenu);
         }
     }
     
 
-    public void DisplayMenu(GameObject objectToDisplayMenu)
+    public void DisplayBothMenus(GameObject objectToDisplayMenu, String publicMenuKey)
     {
         String key = objectToDisplayMenu.tag;
-        if (objectToDisplayMenu.GetComponent<TileController>().Owner ==
-            FindObjectOfType<GameController>().thisTurnPlayer)
+        
+        currentObject = objectToDisplayMenu;
+        TurnOffCurentMenus();
+        if (poolPrivatesMenus.ContainsKey(key))
         {
-            currentObject = objectToDisplayMenu;
-            currentMenu.SetActive(false);
-            currentMenu = poolMenus[key];
-            currentMenu.SetActive(true);
+            currentPrivateMenu = poolPrivatesMenus[key];
+            currentPrivateMenu.SetActive(true);
         }
+        currentPublicMenu = poolPublicMenus[publicMenuKey];
+        currentPublicMenu.SetActive(true);
+        
     }
 
-    public void TurnOffCurentMenu()
+    public void TurnOffCurentMenus()
     {
-        if(currentMenu!=null)
-            currentMenu.SetActive(true);
+        currentPrivateMenu.SetActive(false);
+        currentPublicMenu.SetActive(false);
+    }
+
+    public void DisplayPublicMenu(GameObject objectToDisplayMenu, String publicMenuKey)
+    {
+        String key = publicMenuKey;
+        
+        currentObject = objectToDisplayMenu;
+        TurnOffCurentMenus();
+        currentPublicMenu = poolPublicMenus[key];
+        currentPublicMenu.SetActive(true);
+        
     }
 }

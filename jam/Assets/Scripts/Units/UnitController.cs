@@ -13,7 +13,7 @@ namespace Units
 
         private void Awake()
         {
-            Owner = FindObjectOfType<GameController>().thisTurnPlayer;
+            Owner = FindObjectOfType<GameController>().CurrentPlayer;
             movement = GetComponent<UnitMovementController>();
         }
 

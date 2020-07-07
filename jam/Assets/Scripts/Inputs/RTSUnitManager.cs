@@ -22,21 +22,23 @@ namespace Inputs
 
         public void AddUnitByTap(GameObject unit)
         {
-            if (unit.GetComponent<UnitController>().Owner == gameController.thisTurnPlayer)
-            {
-                if (!Input.GetKey(KeyCode.LeftShift))
-                {
-                    UnitsSelected.Clear();
-                } 
+            if (!Input.GetKey(KeyCode.LeftShift))
+            { 
+                UnShowSelectedUI();
+                UnitsSelected.Clear();
+            } 
+            if(!UnitsSelected.Contains(unit))
                 UnitsSelected.Add(unit);
+            
+            ShowUnitSelectedUI(unit);
                 
-                if (GetComponent<PlayerInput>().rightClickInput == GetComponent<SetDefaultSpawnPositionCommand>())
-                {
-                    GetComponent<PlayerInput>().rightClickInput = GetComponent<MoveUnitsCommand>();
-                }
-                
-                Debug.Log("we have selected " + UnitsSelected[0].name);
+            if (GetComponent<PlayerInput>().rightClickInput == GetComponent<SetDefaultSpawnPositionCommand>())
+            {
+                GetComponent<PlayerInput>().rightClickInput = GetComponent<MoveUnitsCommand>();
             }
+                
+            Debug.Log("we have selected " + UnitsSelected[0].name);
+            
         }
     
         public void StartUnitSelectionAt(Vector3 planePosMouse)
@@ -49,6 +51,7 @@ namespace Inputs
         {
             if (!Input.GetKey(KeyCode.LeftShift))
             {
+                UnShowSelectedUI();
                 UnitsSelected.Clear();
             }
             
@@ -66,15 +69,17 @@ namespace Inputs
             selectionBox.isTrigger = true;
         
             Destroy(selectionBox, 0.02f);
+            
 
         }
     
         private void OnTriggerEnter(Collider other)
         {
             GameObject unit = other.gameObject;
-            if (unit.GetComponent<UnitController>().Owner == gameController.thisTurnPlayer)
+            if (unit.GetComponent<UnitController>().Owner == gameController.CurrentPlayer)
             {
                 UnitsSelected.Add(unit);
+                ShowUnitSelectedUI(unit);
                 Debug.Log(unit.name + "added to selected units");
             }
             
@@ -160,6 +165,27 @@ namespace Inputs
             foreach (GameObject unit in UnitsSelected)
             {
                 unit.GetComponent<UnitController>().MoveTo(tileClicked, planePosMouse);
+            }
+        }
+
+        public void UnShowSelectedUI()
+        {
+            foreach (GameObject unit in UnitsSelected)
+            {
+                unit.GetComponentInChildren<Canvas>().enabled = false;
+            }
+        }
+
+        private void ShowUnitSelectedUI(GameObject unit)
+        {
+            unit.GetComponentInChildren<Canvas>().enabled = true;
+        }
+        private void ShowSelectedUI()
+        {
+            foreach (GameObject unit in UnitsSelected)
+            {
+                unit.GetComponentInChildren<Canvas>().enabled = true;
+               
             }
         }
     }

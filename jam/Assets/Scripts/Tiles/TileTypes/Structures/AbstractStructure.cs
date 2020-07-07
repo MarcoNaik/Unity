@@ -18,11 +18,14 @@ namespace Tiles.TileTypes.Structures
         public int MaxHP;
         private int CurrentHP { get; set; }
         private Collider[] neighbourTiles;
-        
+
+        private GameController gameController;
 
         protected override void Awake()
         {
             base.Awake();
+
+            gameController = FindObjectOfType<GameController>();
             
             tileController.tileState = new StructurePacificState(this);
             
@@ -32,7 +35,7 @@ namespace Tiles.TileTypes.Structures
         private void Start()
         {
             SetNeighbourTiles();
-            tileController.Owner = FindObjectOfType<GameController>().thisTurnPlayer;
+            tileController.Owner = FindObjectOfType<GameController>().CurrentPlayer;
             ownerResources = tileController.Owner.resourceManager;
             SetSpawnPosTo(gameObject, transform.position + Vector3.up * 0.3f);
         }
@@ -64,15 +67,15 @@ namespace Tiles.TileTypes.Structures
             {
                 Debug.Log("owner resources = null");
             }
-            
-            Debug.Log( " has this food " + ownerResources.Food );
 
             if (ownerResources.Food >= unit.cost)
             {
                 ownerResources.removeFood(unit.cost);
                 GameObject tempGO = Instantiate(unit.prefab, transform);
+                tempGO.GetComponent<Renderer>().material = gameController.CurrentPlayerMaterial();
                 tempGO.transform.position = transform.position + Vector3.up * 1.5f;
                 tempGO.GetComponent<UnitController>().MoveTo(DefaultTileToSpawn, DefaultPositionToSpawn);
+                
             }
         }
 
