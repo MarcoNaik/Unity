@@ -64,8 +64,7 @@ namespace Units
             }
 
             if(other.gameObject.layer == 9 && isMovingToTile)
-                if(isMovingToTile)
-                    StopMovingIfOnTile();
+                StopMovingIfOnTile();
         }
         private void OnCollisionExit(Collision other)
         {

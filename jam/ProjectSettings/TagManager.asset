@@ -9,6 +9,10 @@ TagManager:
   - GathererUnit
   - AttackUnit
   - Village
+  - Factory
+  - Town
+  - Castle
+  - Default Tile
   layers:
   - Default
   - TransparentFX

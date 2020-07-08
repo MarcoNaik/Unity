@@ -7,7 +7,7 @@ namespace Units.UnitTypes
     {
         public override void AddToTile(GameObject tile)
         {
-            Player tileOwner = tile.GetComponent<TileController>().Owner;
+            Player.Player tileOwner = tile.GetComponent<TileController>().Owner;
             
             if(tileOwner != null && tileOwner.name.Equals(UnitController.Owner.name)) 
                 tile.GetComponent<TileController>().tile.Defenders.Add(this);

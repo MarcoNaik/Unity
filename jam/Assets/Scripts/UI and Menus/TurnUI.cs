@@ -1,27 +1,28 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TurnUI : MonoBehaviour
+namespace UI_and_Menus
 {
-    private GameController gameController;
-    private String currentPlayerName;
-    
-    public GameObject playerNameTextObject;
-    
-    private void Start()
+    public class TurnUI : MonoBehaviour
     {
-        gameController = FindObjectOfType<GameController>();
-        
-        RefreshTexts();
-    }
+        private GameController gameController;
+        private String currentPlayerName;
     
-    public void RefreshTexts()
-    {
-        currentPlayerName = gameController.CurrentPlayer.name;
+        public GameObject playerNameTextObject;
+    
+        private void Start()
+        {
+            gameController = FindObjectOfType<GameController>();
         
-        playerNameTextObject.GetComponent<TextMeshProUGUI>().text = currentPlayerName;
+            RefreshTexts();
+        }
+    
+        public void RefreshTexts()
+        {
+            currentPlayerName = gameController.CurrentPlayer.name;
+        
+            playerNameTextObject.GetComponent<TextMeshProUGUI>().text = currentPlayerName;
+        }
     }
 }

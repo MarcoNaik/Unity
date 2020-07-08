@@ -11,7 +11,7 @@ namespace Editor
         {
             base.OnInspectorGUI();
             TileMapGenerator mapGenerator = (TileMapGenerator) target;
-        
+
             if (GUILayout.Button("Generate map."))
             {
                 mapGenerator.GenerateMap();

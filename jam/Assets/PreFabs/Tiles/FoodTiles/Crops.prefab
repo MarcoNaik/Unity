@@ -91,9 +91,9 @@ GameObject:
   - component: {fileID: 33282116905304876}
   - component: {fileID: 23882847663073744}
   - component: {fileID: 64605270041495022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crops
-  m_TagString: Untagged
+  m_TagString: FoodTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

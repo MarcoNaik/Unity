@@ -5,7 +5,7 @@ namespace Tiles.Utilities
 {
     public class StructureNeighbour:MonoBehaviour
     {
-        public Player owner;
+        public Player.Player owner;
         private void Awake()
         {
             owner = FindObjectOfType<GameController>().CurrentPlayer;

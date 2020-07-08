@@ -1,12 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Player: MonoBehaviour
+namespace Player
 {
-    public ResourceInventory resourceManager;
-
-    private void Awake()
+    public class Player: MonoBehaviour
     {
+        public ResourceInventory resourceManager;
+
+        private void Awake()
+        {
         
+        }
     }
 }

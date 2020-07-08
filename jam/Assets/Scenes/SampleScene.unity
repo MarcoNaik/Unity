@@ -350,6 +350,12 @@ MonoBehaviour:
   - prefab: {fileID: 3502647587775703652, guid: c40a7d702edd89447bb1080275599544,
       type: 3}
     prefabTag: Village
+  - prefab: {fileID: 3502647587775703652, guid: 763974aa4b61f9541aa274b11c75be34,
+      type: 3}
+    prefabTag: GathererUnit
+  - prefab: {fileID: 3502647587775703652, guid: 0343b68bf12b2754aa3b79b123576379,
+      type: 3}
+    prefabTag: Factory
   publicMenusPrefabs:
   - prefab: {fileID: 3502647587775703652, guid: 954c7e8e05da6d34e9d8da3db88d5ea7,
       type: 3}
@@ -606,7 +612,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -637,7 +643,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 69.27463}
+  m_margin: {x: 0, y: 0, z: 1508.1968, w: 923.0034}
   m_textInfo:
     textComponent: {fileID: 434849421}
     characterCount: 8
@@ -961,6 +967,9 @@ GameObject:
   - component: {fileID: 606754599}
   - component: {fileID: 606754601}
   - component: {fileID: 606754602}
+  - component: {fileID: 606754604}
+  - component: {fileID: 606754603}
+  - component: {fileID: 606754605}
   m_Layer: 0
   m_Name: RTS Controller
   m_TagString: Untagged
@@ -1095,6 +1104,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structure: {fileID: 0}
+--- !u!114 &606754603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606754592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624fb2aa33a5c1c4ca44ef0fdad406e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &606754604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606754592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62132873e7bb0b449884065873f0e394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &606754605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606754592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee24b8f71afd4bfca0104c3d64eb55e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &630717895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1241,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1217,7 +1262,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 59.995605, y: 80.756775, z: -0.6526489, w: 2.6685486}
+  m_margin: {x: 59.995605, y: 80.756775, z: 1766.7567, w: 866.5753}
   m_textInfo:
     textComponent: {fileID: 630717897}
     characterCount: 3
@@ -1815,7 +1860,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1905,10 +1950,10 @@ RectTransform:
   m_Father: {fileID: 599954115}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -319.18, y: 197.7}
-  m_SizeDelta: {x: -975.8847, y: -412.98834}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1148, y: -499}
+  m_SizeDelta: {x: 1920, y: 998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1216527849
 MonoBehaviour:
@@ -2018,7 +2063,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -2049,7 +2094,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 69.27463}
+  m_margin: {x: 0, y: 0, z: 1591.1115, w: 958.43024}
   m_textInfo:
     textComponent: {fileID: 1470126460}
     characterCount: 8
@@ -2186,7 +2231,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2341,12 +2386,24 @@ MonoBehaviour:
   defaultPrefab: {fileID: 1027144338041134, guid: 8d65fe10dbb32e34aa703943ab85d9c0,
     type: 3}
   prefabsToConsider:
-  - prefab: {fileID: 1233889998786750, guid: bb9a7e4c5f7a32f4e818486b0de3ef05, type: 3}
+  - prefab: {fileID: 1233889998786750, guid: 9ae39a4d30bf7ef4a82a83897fe5b8f9, type: 3}
     perentage: 10
-    quantity: 3
+    quantity: 1
+  - prefab: {fileID: 1233889998786750, guid: a361e43f865c4be4bacb12a79e7b28e1, type: 3}
+    perentage: 2
+    quantity: 1
   - prefab: {fileID: 1928123463396898, guid: 71be69e7a312bc844ad384574d3624fe, type: 3}
     perentage: 2
-    quantity: 30
+    quantity: 20
+  - prefab: {fileID: 1027144338041134, guid: 50ee91ed74184f341b2b6d489ffdf156, type: 3}
+    perentage: 2
+    quantity: 4
+  - prefab: {fileID: 1027144338041134, guid: 4e9150023c3bfaf458f579b61c325339, type: 3}
+    perentage: 2
+    quantity: 3
+  - prefab: {fileID: 1027144338041134, guid: 5d099ca9dca2fcd488b9d7e03145707c, type: 3}
+    perentage: 2
+    quantity: 5
 --- !u!114 &1710142641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2389,8 +2446,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2874ed8937d4b664e899d311a02453a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  village: {fileID: 1233889998786750, guid: bb9a7e4c5f7a32f4e818486b0de3ef05, type: 3}
-  defaultTile: {fileID: 0}
+  PrefabKeysList:
+  - prefab: {fileID: 1027144338041134, guid: 8d65fe10dbb32e34aa703943ab85d9c0, type: 3}
+    Key: default
+  - prefab: {fileID: 1233889998786750, guid: bb9a7e4c5f7a32f4e818486b0de3ef05, type: 3}
+    Key: Village
+  - prefab: {fileID: 1743851423142728, guid: 845f30f44a7d6914c8bc17b0221ab5fd, type: 3}
+    Key: Factory
 --- !u!1 &1721643146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,10 +2488,10 @@ RectTransform:
   m_Father: {fileID: 599954115}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -479.3, y: 197.7}
-  m_SizeDelta: {x: -975.8847, y: -412.98834}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: -499}
+  m_SizeDelta: {x: 1920, y: 998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721643148
 MonoBehaviour:
@@ -2602,7 +2664,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2623,7 +2685,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 54.6203, z: 0, w: 25.31189}
+  m_margin: {x: 0, y: 54.6203, z: 1771.1351, w: 878.27374}
   m_textInfo:
     textComponent: {fileID: 1999800466}
     characterCount: 16
@@ -2779,7 +2841,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 98.47618, y: 55.475708, z: 0, w: 16.22699}
+  m_margin: {x: 98.47618, y: 55.475708, z: 1727.009, w: 899.2328}
   m_textInfo:
     textComponent: {fileID: 2143795653}
     characterCount: 2

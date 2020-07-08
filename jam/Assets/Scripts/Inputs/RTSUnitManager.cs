@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Inputs.Commands;
 using Units;
+using Units.UnitTypes;
 using UnityEngine;
 
 namespace Inputs
@@ -187,6 +189,13 @@ namespace Inputs
                 unit.GetComponentInChildren<Canvas>().enabled = true;
                
             }
+        }
+
+        public void Build(GameObject tileClicked, Vector3 planePosMouse, String prefab, int cost)
+        {
+            
+            StartCoroutine(UnitsSelected[0].GetComponent<Gatherer>().Build(tileClicked, planePosMouse ,prefab, cost));
+            
         }
     }
 }

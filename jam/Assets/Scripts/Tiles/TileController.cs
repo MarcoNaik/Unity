@@ -12,7 +12,7 @@ namespace Tiles
     { 
         public AbstractTile tile;
 
-        public Player Owner;
+        public Player.Player Owner;
 
         public AbstractState tileState;
 

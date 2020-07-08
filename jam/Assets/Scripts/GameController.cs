@@ -8,10 +8,10 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public Player[] players;
+    public Player.Player[] players;
     
 
-    public Player CurrentPlayer;
+    public Player.Player CurrentPlayer;
     private TileMapGenerator mapGenerator;
 
     public UIManager UiManager;
@@ -25,10 +25,10 @@ public class GameController : MonoBehaviour
     public static int turn;
     
     
-    private Dictionary<Player, Material> playerMaterialDictionary;
+    private Dictionary<Player.Player, Material> playerMaterialDictionary;
     private void Awake()
     {
-        playerMaterialDictionary = new Dictionary<Player, Material>();
+        playerMaterialDictionary = new Dictionary<Player.Player, Material>();
         
         players[0] = Instantiate(players[0],transform);
         players[1] = Instantiate(players[1],transform);

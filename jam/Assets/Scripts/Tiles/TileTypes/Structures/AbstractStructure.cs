@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Resources;
+using Player;
 using Tiles.StateControllers.States;
 using Tiles.Utilities;
 using Units;

@@ -1,17 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Tiles.TileTypes.Structures;
-using UnityEngine;
-
-public class Town : AbstractStructure
+﻿namespace Tiles.TileTypes.Structures
 {
-    public void SpawnVillager()
+    public class Town : AbstractStructure
     {
-        Spawn(0);
-    }
+        public void SpawnVillager()
+        {
+            Spawn(0);
+        }
 
-    public override void DeliverThisResource(int amount)
-    {
-        throw new System.NotImplementedException();
+        public override void DeliverThisResource(int amount)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

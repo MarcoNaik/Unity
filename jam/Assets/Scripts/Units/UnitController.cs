@@ -7,7 +7,7 @@ namespace Units
     {
         public AbstractUnit unit;
 
-        public Player Owner;
+        public Player.Player Owner;
 
         private UnitMovementController movement;
 
