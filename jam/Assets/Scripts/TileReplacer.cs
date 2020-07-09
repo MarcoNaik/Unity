@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class TileReplacer : MonoBehaviour
 {
+    private GameController gc;
     [System.Serializable]
     public class PrefabKeys
     {
@@ -20,6 +21,7 @@ public class TileReplacer : MonoBehaviour
     private void Awake()
     {
         tileDictionary = new Dictionary<string, GameObject>();
+        gc = FindObjectOfType<GameController>();
     }
 
     private void Start()
@@ -38,8 +40,10 @@ public class TileReplacer : MonoBehaviour
     public void Build(GameObject tileToDestroy, String prefabKey)
     {
         Vector3 position = tileToDestroy.transform.position;
+        gc.RemoveHex(tileToDestroy);
         Destroy(tileToDestroy);
         GameObject tempGO =Instantiate(tileDictionary[prefabKey],transform);
+        gc.AddHex(tempGO);
         tempGO.transform.position = position;
     }
 }

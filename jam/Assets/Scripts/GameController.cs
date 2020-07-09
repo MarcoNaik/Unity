@@ -51,6 +51,7 @@ public class GameController : MonoBehaviour
 
     public void EndTurn()
     {
+        Debug.Log("turn ending");
         HexGlobalEndTurn();
         turn++;
         player1UI.RefreshTexts();
@@ -76,6 +77,15 @@ public class GameController : MonoBehaviour
     public void AddHex(GameObject hex)
     {
         hexMap.Add(hex);
+    }
+
+    public void RemoveHex(GameObject hex)
+    {
+        if (hexMap.Contains(hex)) hexMap.Remove(hex);
+        else
+        {
+            Debug.LogWarning("you are trying to remove an unexisting tile from the tilelist");
+        }
     }
 
     public Material CurrentPlayerMaterial()
