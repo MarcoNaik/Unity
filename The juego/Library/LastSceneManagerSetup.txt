@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/Vorono MapGen/Assets/Scenes/MapGeneratorTest.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0

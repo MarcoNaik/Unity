@@ -1,5 +1,4 @@
-﻿using System;
-using Tiles.Utilities;
+﻿using Tiles.Utilities;
 using UnityEngine;
 
 namespace Units
